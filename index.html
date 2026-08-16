@@ -377,6 +377,30 @@ padding:3px 8px;border-radius:20px;letter-spacing:1px;flex-shrink:0}
 .tgi{background:var(--off);border:1px solid var(--line);border-radius:12px;padding:12px 3px;text-align:center}
 .tgn{font-size:23px;font-weight:900;font-variant-numeric:tabular-nums;line-height:1}
 .tgl{font-size:9.5px;color:var(--tx2);margin-top:5px;font-weight:700}
+/* 雲端同步 */
+.sync{border-radius:var(--r);padding:14px;margin-bottom:12px;display:flex;gap:12px;align-items:flex-start}
+.sync-i{font-size:23px;flex-shrink:0;line-height:1.2}
+.sync-t{font-size:13.5px;font-weight:900;margin-bottom:4px}
+.sync-d{font-size:11.5px;line-height:1.65}
+.sy-off{background:linear-gradient(120deg,#FDECEE,#FFE0E5);border:1.5px solid var(--red)}
+.sy-off .sync-t{color:#A8172C}.sy-off .sync-d{color:#8C2333}
+.sy-on{background:var(--greenl);border:1.5px solid var(--green)}
+.sy-on .sync-t{color:#00794C}.sy-on .sync-d{color:#0A6B4A}
+.sy-warn{background:linear-gradient(120deg,#FFF4DA,#FFEBC2);border:1.5px solid var(--gold)}
+.sy-warn .sync-t{color:#8A6100}.sy-warn .sync-d{color:#7A5A10}
+.syb{width:100%;margin-top:10px;border:none;border-radius:11px;padding:12px;font-size:13px;
+font-weight:900;cursor:pointer;font-family:inherit}
+.syb.go{background:var(--navy);color:#fff}
+.syb.gh{background:var(--green);color:#fff}
+.syrow{display:flex;gap:8px;margin-top:9px}
+.syrow .dbb{flex:1;margin:0}
+.stepn{display:flex;gap:10px;font-size:12px;line-height:1.7;color:var(--tx2);margin-bottom:8px}
+.stepi{width:19px;height:19px;border-radius:50%;background:var(--blue);color:#fff;font-size:10px;
+font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.stepn b{color:var(--tx)}
+.tokin{width:100%;background:var(--off);border:1.5px solid var(--line);border-radius:11px;padding:11px;
+font-size:12px;color:var(--tx);font-family:ui-monospace,Menlo,monospace;outline:none;margin-top:4px}
+.tokin:focus{border-color:var(--blue);background:#fff}
 .db2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .dbb{background:var(--off);border:1.5px solid var(--line);color:var(--tx);border-radius:12px;padding:13px;
 font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
@@ -593,14 +617,28 @@ font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
     <div class="chd"><div class="ct">📅 每日紀錄</div></div>
     <div id="hList"></div>
   </div>
+  <div id="syncBox"></div>
+
+  <div class="card" id="syncSetup" style="display:none">
+    <div class="chd"><div class="ct">☁️ 設定雲端同步</div><div class="cn">一次性設定 · 約 3 分鐘</div></div>
+    <div class="stepn"><div class="stepi">1</div><div>點下面按鈕開啟 GitHub 金鑰頁面（已幫你勾好權限）</div></div>
+    <div class="stepn"><div class="stepi">2</div><div>最下面按 <b>Generate token</b>，複製那串 <b>ghp_</b> 開頭的字</div></div>
+    <div class="stepn"><div class="stepi">3</div><div>貼回下面欄位，按「連線」就完成了</div></div>
+    <button class="syb gh" onclick="openTokenPage()">🔑 開啟 GitHub 金鑰頁面</button>
+    <input class="tokin" id="tokIn" placeholder="貼上 ghp_… 或 github_pat_…" autocomplete="off" spellcheck="false">
+    <button class="syb go" onclick="connectSync()">☁️ 連線並上傳</button>
+    <div class="hint">金鑰只存在你自己的手機，只會用來讀寫<b>你自己的一個私密 Gist</b>。不會碰到你其他的 repo。
+    想撤銷隨時到 GitHub 設定頁刪掉那把金鑰即可。</div>
+  </div>
+
   <div class="card">
-    <div class="chd"><div class="ct">💾 資料備份</div></div>
+    <div class="chd"><div class="ct">💾 本機備份</div></div>
     <div class="db2">
       <button class="dbb" onclick="exportData()">⬇️ 匯出備份</button>
       <button class="dbb" onclick="document.getElementById('impFile').click()">⬆️ 匯入資料</button>
     </div>
     <input type="file" id="impFile" accept=".json,application/json" style="display:none" onchange="importData(event)">
-    <div class="hint">資料存在這支手機裡，<b>不會上傳到任何地方</b>。建議每月匯出一次到雲端硬碟。</div>
+    <div class="hint" id="bkHint"></div>
   </div>
 </div>
 
@@ -967,7 +1005,7 @@ function go(i){
   window.scrollTo(0,0);
   if(i===1){ renderCal(); renderStats(); renderLevels(); renderMs(); }
   if(i===2) renderLove();
-  if(i===3){ renderHistory(); renderChart(); renderChart2(); }
+  if(i===3){ renderHistory(); renderChart(); renderChart2(); renderSync(); }
   if(i===4){ $('stackShow').textContent=SET.stack; renderPlanWhy(); }
 }
 function badge(){
@@ -985,6 +1023,7 @@ function touch(){
   var t=$('savedTag');
   t.textContent='✓ 已自動儲存 '+new Date().toTimeString().slice(0,5);
   if(gainX>0) popXP(gainX);
+  queueSync();
   var afterL=levelOf(totalXP()).i;
   if(afterL>beforeL) toast('⚡ 升級！LV.'+afterL+' 「'+LEVELS[afterL-1][1]+'」');
   else{
@@ -1039,6 +1078,15 @@ function refreshHUD(){
 
 function renderAlerts(){
   var h='',i;
+  /* 沒開同步 + 已經累積紀錄 → 提醒資料有風險 */
+  if(!syncOn() && dates().length>=2){
+    var bd=daysSince(SET.bkAt);
+    h+='<div class="alert al-warn"><div class="alert-i">☁️</div><div><div class="alert-t">資料還沒有雲端保護</div>'+
+      '<div class="alert-d">你已經累積 <b>'+dates().length+' 天</b>紀錄，但它們只存在這支手機 —— '+
+      '刪掉桌面圖示或超過 7 天沒開，<b>就會全部消失</b>。'+
+      (bd===null?'':'（上次備份：'+bd+' 天前）')+
+      '<br>到「洞察」分頁最下面，一次設定就永久解決。</div></div></div>';
+  }
   /* never miss twice */
   var y=new Date(); y.setDate(y.getDate()-1); var yk=fmt(y);
   if(!DB[yk] && dates().length>0){
@@ -1117,12 +1165,12 @@ function renderPlanWhy(){
 function editIdentity(){
   var v=prompt('你想成為什麼樣的人？（每次記錄都是對它投一票）',SET.id);
   if(v===null) return;
-  SET.id=v.trim()||DEF_ID; sSET(); refreshHUD();
+  SET.id=v.trim()||DEF_ID; SET.idEdited=1; sSET(); refreshHUD(); queueSync();
 }
 function editStack(){
   var v=prompt('寫下你的執行意向：「在 ___ 之後，我會 ___」',SET.stack);
   if(v===null) return;
-  SET.stack=v.trim()||DEF_STACK; sSET(); renderAlerts(); $('stackShow').textContent=SET.stack;
+  SET.stack=v.trim()||DEF_STACK; sSET(); renderAlerts(); $('stackShow').textContent=SET.stack; queueSync();
 }
 
 /* ══════ DAY ══════ */
@@ -1165,13 +1213,13 @@ function addMeal(){
   if(s===null) return;
   var a=s.split(','),p={},ks=['carb','protein','fruit','veg'],i;
   for(i=0;i<4;i++){ var x=parseFloat(a[i]); if(x>0) p[ks[i]]=x; }
-  SET.meals.push({n:n.trim(),p:p}); sSET(); renderMeals();
+  SET.meals.push({n:n.trim(),p:p}); sSET(); renderMeals(); queueSync();
   toast('✅ 已加入常用餐點');
 }
 function delMeal(ev,i){
   ev.preventDefault();
   if(!confirm('刪除「'+SET.meals[i].n+'」？')) return false;
-  SET.meals.splice(i,1); sSET(); renderMeals();
+  SET.meals.splice(i,1); sSET(); renderMeals(); queueSync();
   return false;
 }
 
@@ -1344,7 +1392,7 @@ function drawPraise(){
   var av=avail();
   if(!av.length){ toast('🔒 還沒有誇誇券，先去完成條件吧！'); return; }
   var tk=av[Math.floor(Math.random()*av.length)];
-  CLAIMED[tk.key]=Date.now(); sCL();
+  CLAIMED[tk.key]=Date.now(); sCL(); queueSync();
   showCard(tk); renderLove(); badge();
 }
 function showCard(tk){
@@ -1400,7 +1448,7 @@ function logPending(){
 function markSent(){
   var r=logPending(); if(!r) return;
   if(r.sent){ toast('已經記錄過這張囉 💕'); return; }
-  r.sent=true; sPK(); renderLove(); toast('📤 已記錄！等她誇你 💕');
+  r.sent=true; sPK(); renderLove(); queueSync(); toast('📤 已記錄！等她誇你 💕');
 }
 function saveReply(){
   var v=$('replyIn').value.trim();
@@ -1416,7 +1464,7 @@ function savePraiseEdit(i){
   var el=document.getElementById('pkEdit'); if(!el){ editIdx=-1; return; }
   var v=el.value.trim();
   p.reply=v; if(v) p.sent=true;
-  editIdx=-1; sPK(); renderLove();
+  editIdx=-1; sPK(); renderLove(); queueSync();
   toast(v?'💖 已更新誇誇紀錄':'🗑️ 已清空這則回覆');
 }
 function delPraise(i){
@@ -1500,6 +1548,164 @@ function renderChart2(){
               x:{ticks:{color:'#93A9C2',font:{size:9},maxTicksLimit:8},grid:{display:false}}}}});
 }
 
+/* ══════ ☁️ GITHUB GIST 同步 ══════
+   為什麼需要：iOS 把「加到主畫面」的網頁當獨立容器，刪掉圖示 = 資料全毀；
+   而且超過 7 天沒開也會被系統清掉。只有存到裝置外面才真的安全。      */
+var GIST_FILE='mission65.json', GIST_DESC='MISSION 65 · 減脂紀錄（自動同步，請勿刪除）';
+var syncing=false, _syncT=null;
+
+function snapshot(){ return {version:5,savedAt:new Date().toISOString(),days:DB,praise:PK,claimed:CLAIMED,settings:SET}; }
+function ghHeaders(){ return {'Authorization':'token '+SET.tok,'Accept':'application/vnd.github+json','Content-Type':'application/json'}; }
+function syncOn(){ return !!(SET.tok&&SET.gist); }
+
+function openTokenPage(){
+  window.open('https://github.com/settings/tokens/new?scopes=gist&description=MISSION65','_blank');
+  toast('🔑 產生後把那串字貼回來');
+}
+
+function connectSync(){
+  var el=document.getElementById('tokIn'), tok=el?el.value.trim():'';
+  if(!tok){ toast('⚠️ 請先貼上金鑰'); return; }
+  if(syncing) return;
+  var prevTok=SET.tok, prevGist=SET.gist;      // 失敗時要能還原，不能把原本能用的金鑰弄壞
+  syncing=true; renderSync();
+  toast('☁️ 連線中…');
+  SET.tok=tok;
+  /* 先找找看雲端有沒有舊的 gist，有就接上、沒有就開新的 */
+  fetch('https://api.github.com/gists?per_page=100',{headers:ghHeaders()})
+   .then(function(r){ if(!r.ok) throw new Error(r.status===401?'金鑰無效':'GitHub 回應 '+r.status); return r.json(); })
+   .then(function(list){
+     var found=null,i;
+     for(i=0;i<list.length;i++) if(list[i].files&&list[i].files[GIST_FILE]){ found=list[i]; break; }
+     if(found){
+       SET.gist=found.id; sSET();
+       return fetch('https://api.github.com/gists/'+found.id,{headers:ghHeaders()})
+         .then(function(r){ return r.json(); })
+         .then(function(g){
+           var raw=g.files[GIST_FILE].content, cloud=JSON.parse(raw);
+           var cloudDays=cloud.days?Object.keys(cloud.days).length:0, localDays=dates().length;
+           if(cloudDays>0 && confirm('雲端找到 '+cloudDays+' 天的紀錄（本機 '+localDays+' 天）。\n\n要把雲端資料合併進來嗎？\n（兩邊的紀錄都會保留）')){
+             mergeIn(cloud);
+           }
+           return pushSync(true);
+         });
+     }
+     return fetch('https://api.github.com/gists',{method:'POST',headers:ghHeaders(),
+       body:JSON.stringify({description:GIST_DESC,public:false,
+         files:(function(){ var f={}; f[GIST_FILE]={content:JSON.stringify(snapshot(),null,2)}; return f; })()})})
+       .then(function(r){ if(!r.ok) throw new Error('建立失敗 '+r.status); return r.json(); })
+       .then(function(g){ SET.gist=g.id; SET.syncAt=Date.now(); sSET(); });
+   })
+   .then(function(){
+     syncing=false; sSET(); renderSync(); refreshAll();
+     toast('✅ 雲端同步已開啟！資料再也不會不見 🎉');
+   })
+   .catch(function(e){
+     syncing=false; SET.tok=prevTok; SET.gist=prevGist; sSET(); renderSync();
+     toast('❌ '+(e.message||'連線失敗')+'　請確認金鑰有勾 gist 權限');
+   });
+}
+
+function pushSync(quiet){
+  if(!syncOn()) return Promise.resolve();
+  syncing=true; renderSync();
+  var f={}; f[GIST_FILE]={content:JSON.stringify(snapshot(),null,2)};
+  return fetch('https://api.github.com/gists/'+SET.gist,
+      {method:'PATCH',headers:ghHeaders(),body:JSON.stringify({files:f})})
+    .then(function(r){ if(!r.ok) throw new Error('上傳失敗 '+r.status);
+      SET.syncAt=Date.now(); SET.pend=0; sSET(); syncing=false; renderSync();
+      if(!quiet) toast('☁️ 已同步到雲端'); })
+    .catch(function(e){
+      syncing=false; SET.pend=1; sSET(); renderSync();
+      if(!quiet) toast('⚠️ 同步失敗，資料已存在本機，稍後自動重試');
+    });
+}
+/* 記錄後 3 秒才上傳，避免連點 10 下就打 10 次 API */
+function queueSync(){
+  if(!syncOn()) return;
+  SET.pend=1;
+  clearTimeout(_syncT);
+  _syncT=setTimeout(function(){ pushSync(true); },3000);
+}
+function pullSync(){
+  if(!syncOn()) return Promise.resolve();
+  syncing=true; renderSync();
+  return fetch('https://api.github.com/gists/'+SET.gist+'?t='+Date.now(),{headers:ghHeaders()})
+    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function(g){
+      var file=g.files&&g.files[GIST_FILE];
+      if(!file) throw new Error('雲端沒有資料');
+      var cloud=JSON.parse(file.content);
+      mergeIn(cloud);
+      SET.syncAt=Date.now(); sSET(); syncing=false;
+      refreshAll(); renderSync();
+      toast('⬇️ 已從雲端還原 '+dates().length+' 天紀錄');
+    })
+    .catch(function(e){ syncing=false; renderSync(); toast('⚠️ 讀取雲端失敗：'+(e.message||'')); });
+}
+/* 合併規則：以「天」為單位，兩邊都有就留 XP 高的那份（資料比較完整） */
+function mergeIn(cloud){
+  var k;
+  if(cloud.days) for(k in cloud.days){
+    if(!DB[k] || dayXP(cloud.days[k])>dayXP(DB[k])) DB[k]=cloud.days[k];
+  }
+  if(Array.isArray(cloud.praise)){
+    var seen={},i,out=[];
+    var all=PK.concat(cloud.praise);
+    for(i=0;i<all.length;i++){ var id=all[i].id||all[i].ts; if(!seen[id]){ seen[id]=1; out.push(all[i]); } }
+    out.sort(function(a,b){ return String(b.ts).localeCompare(String(a.ts)); });
+    PK.length=0; PK.push.apply(PK,out);        // 就地替換，避免外部還握著舊陣列參考
+  }
+  if(cloud.claimed) for(k in cloud.claimed) if(!CLAIMED[k]) CLAIMED[k]=cloud.claimed[k];
+  if(cloud.settings){
+    if(cloud.settings.id&&!SET.idEdited) SET.id=cloud.settings.id;
+    if(cloud.settings.stack) SET.stack=cloud.settings.stack;
+    if(Array.isArray(cloud.settings.meals)&&cloud.settings.meals.length) SET.meals=cloud.settings.meals;
+  }
+  sDB(); sPK(); sCL(); sSET(); bust();
+}
+function disconnectSync(){
+  if(!confirm('要解除雲端同步嗎？\n\n雲端那份資料會保留（不會刪除），只是這支手機不再自動上傳。')) return;
+  SET.tok=''; SET.gist=''; SET.pend=0; sSET(); renderSync();
+  toast('已解除同步 · 雲端資料仍保留');
+}
+function daysSince(ts){ return ts?Math.floor((Date.now()-ts)/864e5):null; }
+
+function renderSync(){
+  var box=$('syncBox'), setup=$('syncSetup'), h='';
+  if(syncOn()){
+    var d=daysSince(SET.syncAt), when=SET.syncAt?new Date(SET.syncAt):null;
+    var stale=(d!==null&&d>=3)||SET.pend;
+    h='<div class="sync '+(stale?'sy-warn':'sy-on')+'"><div class="sync-i">'+(syncing?'🔄':(stale?'⚠️':'☁️'))+'</div><div style="flex:1">'+
+      '<div class="sync-t">'+(syncing?'同步中…':(stale?'有資料還沒上傳':'雲端同步運作中'))+'</div>'+
+      '<div class="sync-d">'+(when?('最後同步：'+when.getMonth()+1+'/'+when.getDate()+' '+String(when.getHours()).padStart(2,'0')+':'+String(when.getMinutes()).padStart(2,'0')):'尚未同步')+
+      '<br>刪掉桌面圖示、換手機都不會不見了。</div>'+
+      '<div class="syrow"><button class="dbb" onclick="pushSync()">⬆️ 立即上傳</button>'+
+      '<button class="dbb" onclick="pullSync()">⬇️ 從雲端還原</button></div>'+
+      '<div class="syrow"><button class="dbb" onclick="disconnectSync()" style="color:var(--red);border-color:#F5C2C9">解除同步</button></div>'+
+      '</div></div>';
+    setup.style.display='none';
+  } else {
+    h='<div class="sync sy-off"><div class="sync-i">⚠️</div><div style="flex:1">'+
+      '<div class="sync-t">你的資料現在只存在這支手機</div>'+
+      '<div class="sync-d">iPhone 把「加到主畫面」的網頁當成獨立 App，<b>刪掉圖示資料就全沒了</b>，'+
+      '超過 7 天沒開也會被系統自動清掉。<br>開啟雲端同步，這些就都不會發生。</div>'+
+      '<button class="syb go" onclick="showSetup()">☁️ 開啟雲端同步（免費）</button>'+
+      '</div></div>';
+  }
+  box.innerHTML=h;
+  var bd=daysSince(SET.bkAt);
+  $('bkHint').innerHTML = syncOn()
+    ? '雲端同步已經在保護你了。這裡是額外的離線備份，想存一份到雲端硬碟可以用。'
+    : '<b style="color:var(--red)">目前沒有任何雲端保護。</b>'+(bd===null?'你還沒匯出過備份。':'上次備份是 '+bd+' 天前。')+
+      '至少每週匯出一次存到 iCloud／Google Drive。';
+}
+function showSetup(){ $('syncSetup').style.display='block'; $('syncSetup').scrollIntoView({behavior:'smooth',block:'center'}); }
+function refreshAll(){
+  openDay(); renderCal(); renderStats(); renderLevels(); renderMs(); renderLove();
+  renderHistory(); renderChart(); renderChart2(); badge();
+}
+
 /* ══════ BACKUP ══════ */
 function exportData(){
   var blob=new Blob([JSON.stringify({version:4,exported:new Date().toISOString(),
@@ -1508,6 +1714,7 @@ function exportData(){
   a.href=url; a.download='mission65-backup-'+today()+'.json';
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
   setTimeout(function(){ URL.revokeObjectURL(url); },1000);
+  SET.bkAt=Date.now(); sSET(); renderSync();
   toast('⬇️ 備份已下載');
 }
 function importData(e){
@@ -1527,6 +1734,7 @@ function importData(e){
       } else for(k in o) DB[k]=o[k];
       sDB(); sPK(); sCL(); sSET(); bust();
       openDay(); renderCal(); renderStats(); renderLevels(); renderMs(); renderLove(); renderHistory(); renderChart(); renderChart2();
+      SET.bkAt=Date.now(); sSET(); queueSync();
       toast('✅ 匯入成功 · 共 '+dates().length+' 天');
     }catch(err){ alert('❌ 檔案格式錯誤，請確認是本 App 匯出的 JSON'); }
     e.target.value='';
@@ -1540,6 +1748,12 @@ cur=today();
 var _n=new Date(); calY=_n.getFullYear(); calM=_n.getMonth();
 openDay();
 renderLove();
+renderSync();
+if(syncOn()) pullSync();                       // 開啟就先跟雲端對一次
+window.addEventListener('online',function(){ if(SET.pend) pushSync(true); });
+document.addEventListener('visibilitychange',function(){    // 切回 App 時把沒傳完的補傳
+  if(!document.hidden && SET.pend) pushSync(true);
+});
 </script>
 </body>
 </html>
