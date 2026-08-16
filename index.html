@@ -299,6 +299,7 @@ line-height:1.6;border-left:3px solid var(--pink)}
 .pkact{display:flex;gap:7px;margin-top:10px}
 .pkb{flex:1;border:1.5px solid var(--line);background:var(--off);color:var(--tx2);border-radius:9px;padding:8px;
 font-size:11.5px;font-weight:800;cursor:pointer;font-family:inherit}
+.pkb.prim{background:var(--pink);border-color:var(--pink);color:#fff}
 
 /* ══ MODAL ══ */
 .ov{position:fixed;inset:0;background:rgba(11,27,51,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
@@ -365,6 +366,12 @@ line-height:1.6;color:var(--tx2);margin-bottom:7px;border:1px solid var(--line)}
 font-size:12.5px;margin-bottom:6px;color:var(--tx2);border:1px solid var(--line)}
 .wkd{font-weight:900;color:var(--blue);min-width:18px}
 .wk.rs{background:var(--greenl);border-color:#B7ECD8}
+.wk.tdy{background:linear-gradient(100deg,#DEEBFF,#EAF2FE);border-color:var(--blue);border-width:2px;
+box-shadow:0 2px 10px rgba(31,111,235,.18);font-weight:700;color:var(--tx)}
+.wk.tdy.rs{background:linear-gradient(100deg,#D6F5E8,#E6FAF1);border-color:var(--green)}
+.wktag{margin-left:auto;font-size:9px;font-weight:900;background:var(--blue);color:#fff;
+padding:3px 8px;border-radius:20px;letter-spacing:1px;flex-shrink:0}
+.wk.tdy.rs .wktag{background:var(--green)}
 .wk.rs .wkd{color:var(--green)}
 .tg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .tgi{background:var(--off);border:1px solid var(--line);border-radius:12px;padding:12px 3px;text-align:center}
@@ -649,13 +656,7 @@ font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
   </div>
   <div class="card">
     <div class="chd"><div class="ct">💪 一週訓練</div></div>
-    <div class="wk"><div class="wkd">一</div><div>棒式 3 組 ＋ 走路 7000 步</div></div>
-    <div class="wk"><div class="wkd">二</div><div>棒式 3 組 ＋ 靠牆深蹲 3 次</div></div>
-    <div class="wk"><div class="wkd">三</div><div>Tabata 2–3 輪 ＋ 走路</div></div>
-    <div class="wk"><div class="wkd">四</div><div>棒式 3 組 ＋ 膝蓋伏地挺身 10 下</div></div>
-    <div class="wk"><div class="wkd">五</div><div>棒式 3 組 ＋ 相撲深蹲 3 組</div></div>
-    <div class="wk"><div class="wkd">六</div><div>Tabata 或 戶外走路 40 分鐘</div></div>
-    <div class="wk rs"><div class="wkd">日</div><div>休息恢復 ＋ 輕鬆散步</div></div>
+    <div id="wkList"></div>
     <div class="hint">⚠️ 有練的時候體重會短暫上升，那是肌肉跟水分 —— <b>但你會更帥</b>。看 7 日平均和腰圍才準。</div>
   </div>
 </div>
@@ -740,10 +741,19 @@ var REASONS=[
  {e:'🤵',t:'明年 3 月要當伴郎'},
  {e:'🌏',t:'我要健康享受與體驗人生'},
  {e:'💰',t:'健康又省錢，$$$ 留下來'}];
+/* 一週訓練菜單（週一起算） */
+var WEEK=[
+ {d:'一',t:'棒式 3 組 ＋ 走路 7000 步'},
+ {d:'二',t:'棒式 3 組 ＋ 靠牆深蹲 3 次'},
+ {d:'三',t:'Tabata 2–3 輪 ＋ 走路'},
+ {d:'四',t:'棒式 3 組 ＋ 膝蓋伏地挺身 10 下'},
+ {d:'五',t:'棒式 3 組 ＋ 相撲深蹲 3 組'},
+ {d:'六',t:'Tabata 或 戶外走路 40 分鐘'},
+ {d:'日',t:'休息恢復 ＋ 輕鬆散步',rest:1}];
 /* 有期限的兩場硬仗 */
 var BATTLES=[
- {d:'2026-11-01',e:'💒',t:'前女友婚禮',s:'那天走進去，要讓全場多看兩眼'},
- {d:'2027-03-01',e:'🤵',t:'當伴郎',s:'西裝要撐得起來，不是被撐開'}];
+ {d:'2026-11-14',e:'💒',t:'前女友婚禮',s:'那天走進去，要讓全場多看兩眼'},
+ {d:'2027-03-20',e:'🤵',t:'當伴郎',s:'西裝要撐得起來，不是被撐開'}];
 var ASKS=[
 '請用 3 個形容詞誇我的意志力，而且不能重複用「厲害」。',
 '請說出你最近觀察到我身上「一個具體的改變」，越細節越好。',
@@ -792,7 +802,7 @@ var OLD_IDS=['我是一個會照顧自己身體的人'];   // 舊預設值 → �
 /* ══════ STATE ══════ */
 var DB={},PK=[],CLAIMED={},SET={},day,cur,calY,calM,pending=null,chartObj=null,chart2=null;
 var WD=['日','一','二','三','四','五','六'];
-var _el={},_c={},_uid=0,_saveT=null,_lastLv=0;
+var _el={},_c={},_uid=0,editIdx=-1;
 function $(id){ return _el[id]||(_el[id]=document.getElementById(id)); }
 function bust(){ _c={}; }
 function uid(){ return Date.now().toString(36)+'-'+(++_uid); }
@@ -1074,8 +1084,18 @@ function renderWhy(){
   }
   $('whyBox').innerHTML=h+'</div>';
 }
+function renderWeek(){
+  var idx=(new Date().getDay()+6)%7, h='', i, w;   // getDay 0=日 → 轉成週一起算
+  for(i=0;i<WEEK.length;i++){ w=WEEK[i];
+    h+='<div class="wk'+(w.rest?' rs':'')+(i===idx?' tdy':'')+'">'+
+       '<div class="wkd">'+w.d+'</div><div>'+w.t+'</div>'+
+       (i===idx?'<div class="wktag">今天</div>':'')+'</div>';
+  }
+  $('wkList').innerHTML=h;
+}
 function renderPlanWhy(){
   var h='',i;
+  renderWeek();
   var mo=new Date().getMonth()+1;                       // 標記目前進行中的階段
   $('ph1').classList.toggle('now',mo<=9);
   $('ph2').classList.toggle('now',mo>=10&&mo<=11);
@@ -1281,8 +1301,13 @@ function renderLove(){
       '<div class="pkdt">'+(d.getMonth()+1)+'/'+d.getDate()+'</div></div>'+
       '<div class="pktxt">'+esc(p.e||'')+' '+esc(p.t||'')+'</div><div class="pkask">'+esc(p.ask||'')+'</div>'+
       (p.reply?'<div class="pkrep">💬 '+esc(p.reply)+'</div>':'')+
-      '<div class="pkact">'+(p.reply?'':'<button class="pkb" onclick="addReply('+i+')">✏️ 記下她的回覆</button>')+
-      '<button class="pkb" onclick="delPraise('+i+')">🗑️ 刪除</button></div></div>';
+      (editIdx===i
+        ? '<textarea class="rin" id="pkEdit" style="margin-top:9px" placeholder="貼上她的回覆，或寫下她說的話…">'+esc(p.reply||'')+'</textarea>'+
+          '<div class="pkact"><button class="pkb prim" onclick="savePraiseEdit('+i+')">💾 儲存</button>'+
+          '<button class="pkb" onclick="cancelEdit()">取消</button></div>'
+        : '<div class="pkact"><button class="pkb" onclick="editPraise('+i+')">'+
+          (p.reply?'✏️ 編輯回覆':'✏️ 記下她的回覆')+'</button>'+
+          '<button class="pkb" onclick="delPraise('+i+')">🗑️ 刪除</button></div>')+'</div>';
   }
   el.innerHTML=h;
 }
@@ -1303,6 +1328,18 @@ function renderConds(){
   h+=row(false,'📉','週減達標','本週體重平均比上週低 0.3 kg 以上','週結算');
   $('condList').innerHTML=h;
 }
+/* 抽題目：先發還沒出過的，全部出過才從「最久沒出現」的開始輪 */
+function pickAsk(){
+  var seen={},i,a;
+  for(i=0;i<PK.length;i++){ a=PK[i].ask; if(a&&seen[a]===undefined) seen[a]=i; }  // i 越小 = 越新
+  if(pending&&pending.ask) seen[pending.ask]=-1;
+  var fresh=[];
+  for(i=0;i<ASKS.length;i++) if(seen[ASKS[i]]===undefined) fresh.push(ASKS[i]);
+  if(fresh.length) return fresh[Math.floor(Math.random()*fresh.length)];
+  var best=ASKS[0],bi=-2;
+  for(i=0;i<ASKS.length;i++) if(seen[ASKS[i]]>bi){ bi=seen[ASKS[i]]; best=ASKS[i]; }
+  return best;
+}
 function drawPraise(){
   var av=avail();
   if(!av.length){ toast('🔒 還沒有誇誇券，先去完成條件吧！'); return; }
@@ -1312,7 +1349,7 @@ function drawPraise(){
 }
 function showCard(tk){
   var tw=trendW(),s=streak(),L=levelOf(totalXP());
-  var ask=ASKS[Math.floor(Math.random()*ASKS.length)];
+  var ask=pickAsk();
   pending={id:uid(),key:tk.key,b:tk.b,e:tk.e,t:tk.t,s:tk.s,ask:ask,
            w:tw.toFixed(1),streak:s,lv:'LV.'+L.i,ident:SET.id,ts:new Date().toISOString()};
   $('shBadge').textContent=tk.b; $('shEmoji').textContent=tk.e;
@@ -1371,16 +1408,22 @@ function saveReply(){
   var r=logPending(); if(!r) return;
   r.reply=v; r.sent=true; sPK(); renderLove(); closeModal(); toast('💖 已存進誇誇紀錄');
 }
-function addReply(i){
-  var p=PK[i]; if(!p) return;
-  var v=prompt('她怎麼誇你的？記下來：',p.reply||'');
-  if(v===null) return;
-  p.reply=v.trim(); sPK(); renderLove();
-  if(p.reply) toast('💖 已存進誇誇紀錄');
+function editPraise(i){ editIdx=i; renderLove(); }
+function cancelEdit(){ editIdx=-1; renderLove(); }
+function savePraiseEdit(i){
+  var p=PK[i]; if(!p){ editIdx=-1; return; }
+  /* 這個 textarea 是 innerHTML 動態產生的，不能用會快取的 $()，否則抓到已被移除的舊節點 */
+  var el=document.getElementById('pkEdit'); if(!el){ editIdx=-1; return; }
+  var v=el.value.trim();
+  p.reply=v; if(v) p.sent=true;
+  editIdx=-1; sPK(); renderLove();
+  toast(v?'💖 已更新誇誇紀錄':'🗑️ 已清空這則回覆');
 }
 function delPraise(i){
   if(!confirm('確定刪除這則誇誇紀錄？')) return;
-  PK.splice(i,1); sPK(); renderLove();
+  PK.splice(i,1);
+  if(editIdx===i) editIdx=-1; else if(editIdx>i) editIdx--;
+  sPK(); renderLove();
 }
 
 /* ══════ RENDER: 洞察 ══════ */
@@ -1423,6 +1466,10 @@ function renderChart(){
   var g=ctx.createLinearGradient(0,0,0,190);
   g.addColorStop(0,'rgba(31,111,235,.22)'); g.addColorStop(1,'rgba(31,111,235,0)');
   var flat=function(y){ return vals.map(function(){ return y; }); };
+  /* Y 軸依實際資料自動延伸，體重再高也不會被切掉 */
+  var yLo=GOAL_W, yHi=START_W;
+  for(i=0;i<vals.length;i++){ if(vals[i]<yLo) yLo=vals[i]; if(vals[i]>yHi) yHi=vals[i]; }
+  yLo=Math.floor(yLo-1.5); yHi=Math.ceil(yHi+1.5);
   if(chartObj) chartObj.destroy();
   chartObj=new Chart(ctx,{type:'line',data:{labels:labels,datasets:[
     {data:vals,borderColor:'rgba(147,169,194,.75)',borderWidth:1.2,pointRadius:2,
@@ -1433,7 +1480,7 @@ function renderChart(){
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){
         return (c.datasetIndex===1?'7日平均 ':'當日 ')+c.parsed.y+' kg'; }}}},
-      scales:{y:{min:GOAL_W-1.5,max:START_W+1.5,ticks:{color:'#93A9C2',font:{size:10},callback:function(v){return v+'kg';}},grid:{color:'#E6EDF6'}},
+      scales:{y:{min:yLo,max:yHi,ticks:{color:'#93A9C2',font:{size:10},callback:function(v){return v+'kg';}},grid:{color:'#E6EDF6'}},
               x:{ticks:{color:'#93A9C2',font:{size:9},maxTicksLimit:8},grid:{display:false}}}}});
 }
 function renderChart2(){
