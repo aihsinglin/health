@@ -404,14 +404,56 @@ font-size:12px;color:var(--tx);font-family:ui-monospace,Menlo,monospace;outline:
 .db2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .dbb{background:var(--off);border:1.5px solid var(--line);color:var(--tx);border-radius:12px;padding:13px;
 font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
-.hi{background:var(--off);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:8px;cursor:pointer}
-.hid{font-size:10.5px;color:var(--tx3);font-weight:700}
-.hiw{font-size:18px;font-weight:900;color:var(--blue);font-variant-numeric:tabular-nums;margin-top:1px}
 .hip{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap}
 .hib{font-size:9.5px;padding:3px 8px;border-radius:20px;font-weight:800;background:var(--white);color:var(--tx2);border:1px solid var(--line)}
 .chartbox{height:190px;position:relative}
 .tierbadge{display:inline-block;font-size:9.5px;font-weight:900;padding:2px 7px;border-radius:20px;margin-left:6px}
 .tb1{background:#F5E4D0;color:#8A5520}.tb2{background:#DFE8F0;color:#4A6580}.tb3{background:#DEEBFF;color:var(--blued)}
+
+/* ══ Season 2 additions ══ */
+.hsel{width:100%;font-family:inherit;background-color:var(--off);border:1.5px solid var(--line);border-radius:11px;padding:11px 36px 11px 12px;
+font-size:13.5px;font-weight:800;color:var(--tx);appearance:none;-webkit-appearance:none;outline:none;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2393A9C2' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+background-repeat:no-repeat;background-position:right 13px center}
+.hsel:focus{border-color:var(--blue);background-color:#fff}
+.hsum{font-size:11px;color:var(--tx2);margin:9px 2px 11px;line-height:1.7}
+.hsum b{color:var(--tx)}
+.hr{background:var(--off);border:1px solid var(--line);border-radius:12px;margin-bottom:7px;overflow:hidden}
+.hrh{display:flex;align-items:center;gap:8px;padding:10px 12px;cursor:pointer}
+.hrd{font-size:12.5px;font-weight:900;min-width:62px;font-variant-numeric:tabular-nums}
+.hrd span{font-size:10px;color:var(--tx3);font-weight:700}
+.hrm{flex:1;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;font-variant-numeric:tabular-nums}
+.hrw{font-size:13px;font-weight:900;color:var(--blue)}
+.hrx{font-size:11px;font-weight:800;color:#E9A100}
+.hrs{font-size:10px;font-weight:800;color:var(--violet)}
+.hrc{color:var(--tx3);font-size:11px;transition:transform .2s}
+.hr.open .hrc{transform:rotate(180deg)}
+.hrb{display:none;padding:2px 12px 12px;border-top:1px dashed var(--line)}
+.hr.open .hrb{display:block}
+.hrf{font-size:12px;line-height:1.7;margin-top:8px;color:var(--tx)}
+.hrf em{font-style:normal;font-size:10px;font-weight:800;color:var(--tx3);margin-right:6px}
+.hrn{font-size:11.5px;color:var(--tx2);margin-top:7px;line-height:1.6;white-space:pre-wrap}
+.hre{margin-top:10px;width:100%}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pg1{background:var(--off);border:1px solid var(--line);border-radius:12px;padding:11px 6px;text-align:center}
+.pgn{font-size:20px;font-weight:900;font-variant-numeric:tabular-nums}
+.pgl{font-size:9.5px;color:var(--tx3);font-weight:700;margin-top:2px}
+.pmsg{margin-top:11px;border-radius:12px;padding:11px 13px;font-size:12px;line-height:1.7;font-weight:600}
+.pm-ok{background:var(--greenl);color:#0A6B45}
+.pm-mid{background:var(--goldl);color:#7A5A10}
+.pm-low{background:#FFEFE6;color:#9A4A22}
+.pm-na{background:var(--off);color:var(--tx2)}
+.s1{display:flex;gap:11px;align-items:center;background:linear-gradient(110deg,#F3EEFF,#EAE3FF);border:1.5px solid #CFC4FF;border-radius:12px;padding:11px 13px;margin-top:10px}
+.s1e{font-size:26px}
+.s1t{font-size:12.5px;font-weight:900;color:var(--violet)}
+.s1d{font-size:11px;color:#5B47C4;line-height:1.6;margin-top:2px}
+.exr{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.exr:last-child{border-bottom:none}
+.exn{flex:1;font-size:13.5px;font-weight:800}
+.exn span{display:block;font-size:10px;color:var(--tx3);font-weight:700;margin-top:1px}
+.exv{min-width:78px;text-align:center;font-size:17px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--tx3)}
+.exv.on{color:var(--green)}
+.exv small{font-size:10px;font-weight:700;margin-left:2px}
 </style>
 </head>
 <body>
@@ -474,7 +516,8 @@ font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
   </div>
 
   <div class="card">
-    <div class="chd"><div class="ct">⚡ 一鍵記錄</div><div class="cn">點一下 = 份量＋紀錄</div></div>
+    <div class="chd"><div class="ct">⚡ 一鍵記錄</div><div class="cn">上排 = 今天還剩幾份</div></div>
+    <div class="tg" id="remBox" style="margin-bottom:12px"></div>
     <div class="qm" id="qmRow"></div>
     <div class="hint">用你 Excel 裡真的常吃的東西建的，<b>一餐一秒記完</b>。長按可刪除。</div>
   </div>
@@ -494,6 +537,12 @@ font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
   </div>
 
   <div class="card">
+    <div class="chd"><div class="ct">💪 運動紀錄</div><div class="cn" id="exCount"></div></div>
+    <div id="exList"></div>
+    <div class="hint">做了就按 ＋，一次加一組。<b>有記運動，「今天有動」會自動打勾。</b></div>
+  </div>
+
+  <div class="card">
     <div class="chd"><div class="ct">✅ 每日打卡</div><div class="cn" id="ckCount">0 / 5</div></div>
     <div class="ckl" id="ckList"></div>
   </div>
@@ -508,8 +557,8 @@ font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
   <div class="card">
     <div class="chd"><div class="ct">⚖️ 體重</div><div class="cn">看趨勢，別看單日</div></div>
     <div class="wg">
-      <div class="wb hot"><div class="wl">☀️ 空腹晨重</div><input type="number" step="0.1" inputmode="decimal" id="wM" placeholder="—" oninput="onWeight()"></div>
-      <div class="wb"><div class="wl">🌙 睡前體重</div><input type="number" step="0.1" inputmode="decimal" id="wN" placeholder="—" oninput="touch()"></div>
+      <div class="wb hot"><div class="wl">☀️ 空腹晨重</div><input type="number" step="0.1" inputmode="decimal" id="wM" placeholder="—" oninput="onWeight()" onblur="checkProgress()"></div>
+      <div class="wb"><div class="wl">🌙 睡前體重</div><input type="number" step="0.1" inputmode="decimal" id="wN" placeholder="—" oninput="touch()" onblur="checkProgress()"></div>
     </div>
     <div class="hint">單日數字沒有意義 —— 生理期、鹽分、便秘都會讓它上下 1kg。<b>只看上方的 7 日平均。</b></div>
   </div>
@@ -551,6 +600,7 @@ font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
   <div class="card">
     <div class="chd"><div class="ct">⚡ 等級進程</div><div class="cn" id="lvProg"></div></div>
     <div id="lvList"></div>
+    <div id="s1Box"></div>
   </div>
 
   <div class="card">
@@ -595,9 +645,13 @@ font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
 <!-- ═══ 洞察 ═══ -->
 <div class="page" id="p-data">
   <div class="card">
+    <div class="chd"><div class="ct">📍 計畫進度</div><div class="cn">對照 6/26 → 65kg 的計畫線</div></div>
+    <div id="paceBox"></div>
+  </div>
+  <div class="card">
     <div class="chd"><div class="ct">📉 體重趨勢</div><div class="cn">粗線 = 7 日平均</div></div>
     <div class="chartbox"><canvas id="chart"></canvas></div>
-    <div class="hint">細線抖動是水分，別理它。<b>粗線才是你真正的進度。</b>金線 70kg 是投影機，綠線 65kg 是變帥終點。</div>
+    <div class="hint">細線抖動是水分，別理它。<b>粗線才是你真正的進度。</b>金線 70kg 是投影機，綠線 65kg 是終點，<b>紫色點線是計畫線</b>，粗線貼著它就是在軌道上。</div>
   </div>
   <div class="card">
     <div class="chd"><div class="ct">📈 複利曲線</div><div class="cn">1% 法則</div></div>
@@ -605,7 +659,7 @@ font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
     <div class="hint">《原子習慣》：每天進步 1%，一年後是 <b>37 倍</b>。這條線畫的是你累積的 XP —— <b>體重會卡關，這條永遠只會往上。</b></div>
   </div>
   <div class="card">
-    <div class="chd"><div class="ct">📊 近 7 天平均份量</div><div class="cn">目標 9 / 9 / 3 / 5</div></div>
+    <div class="chd"><div class="ct">📊 近 7 天平均份量</div><div class="cn">目標 7 / 9 / 2 / 5</div></div>
     <div class="tg">
       <div class="tgi"><div class="tgn" style="color:#E08A00" id="a1">-</div><div class="tgl">主食</div></div>
       <div class="tgi"><div class="tgn" style="color:var(--red)" id="a2">-</div><div class="tgl">蛋白質</div></div>
@@ -614,7 +668,13 @@ font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
     </div>
   </div>
   <div class="card">
+    <div class="chd"><div class="ct">💪 近 7 天運動</div><div class="cn" id="exDays"></div></div>
+    <div class="tg" id="exStat"></div>
+  </div>
+  <div class="card">
     <div class="chd"><div class="ct">📅 每日紀錄</div></div>
+    <select class="hsel" id="hSel" onchange="renderHistory()" aria-label="選擇要看的紀錄範圍"></select>
+    <div class="hsum" id="hSum"></div>
     <div id="hList"></div>
   </div>
   <div id="syncBox"></div>
@@ -661,32 +721,41 @@ font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
   <div class="law" style="border-color:var(--pink)"><div class="lawn" style="color:var(--pink)">LAW 02 · CRAVING</div><div class="lawt">讓習慣有吸引力</div>
     <div class="lawd">把「被女友誇帥」綁在「記錄達標」上 —— 這就是<b>誘惑綑綁</b>。隨機誇獎指令則是變動獎勵，多巴胺最強的形式。</div></div>
   <div class="law" style="border-color:var(--green)"><div class="lawn" style="color:var(--green)">LAW 03 · RESPONSE</div><div class="lawt">讓行動輕而易舉</div>
-    <div class="lawd"><b>一鍵記錄</b>把一餐從 13 個動作壓到 1 個。沒有存檔按鈕，全部自動存。<br><b>最低標準日</b>：再爛的一天，記一項就保住連續。</div></div>
+    <div class="lawd"><b>一鍵記錄</b>把一餐從 13 個動作壓到 1 個。沒有存檔按鈕，全部自動存。<br><b>最低標準日</b>：再爛的一天，記 2 筆食物就保住連續。</div></div>
   <div class="law" style="border-color:var(--gold)"><div class="lawn" style="color:var(--gold)">LAW 04 · REWARD</div><div class="lawt">讓獎賞令人滿足</div>
-    <div class="lawd">每個動作立刻進 XP，體重卡關的日子<b>等級照樣往上爬</b>。三色日曆讓你捨不得中斷鏈條，護級卡確保你不會一夕歸零。</div></div>
+    <div class="lawd">每個動作立刻進 XP，XP 永遠只增不減；但<b>升級要「XP 夠」＋「7 日均重過關」</b>兩道門，所以等級不會騙你。三色日曆讓你捨不得中斷鏈條，護級卡確保你不會一夕歸零。</div></div>
 
   <div class="card">
-    <div class="chd"><div class="ct">🎯 每日份量目標</div><div class="cn">依你的紀錄設定</div></div>
+    <div class="chd"><div class="ct">🎯 每日份量目標</div><div class="cn">約 1,500 大卡／天</div></div>
     <div class="tg">
-      <div class="tgi"><div class="tgn" style="color:#E08A00">9</div><div class="tgl">🌾 主食</div></div>
+      <div class="tgi"><div class="tgn" style="color:#E08A00">7</div><div class="tgl">🌾 主食</div></div>
       <div class="tgi"><div class="tgn" style="color:var(--red)">9</div><div class="tgl">🥩 蛋白質</div></div>
-      <div class="tgi"><div class="tgn" style="color:var(--green)">3</div><div class="tgl">🍎 水果</div></div>
+      <div class="tgi"><div class="tgn" style="color:var(--green)">2</div><div class="tgl">🍎 水果</div></div>
       <div class="tgi"><div class="tgn" style="color:var(--blue)">5</div><div class="tgl">🥦 蔬菜</div></div>
     </div>
-    <div class="hint">你原本 Excel 就在用的配置，維持不變。重點是<b>穩定執行</b>，不是一直改數字。</div>
+    <div class="hint"><b>為什麼調降？</b>8/17–8/26 你幾乎天天達標 9 / 9 / 3 / 5，體重卻停在 79 上下 —— 舊配置比較像你的「維持點」。以 160cm／33 歲／80kg 估算，一天消耗約 1,800–2,000 大卡，舊配置加上烹調用油剛好落在這附近。新配置（加油脂約 1,500 大卡）每天少 300–500 大卡，<b>預期每週減 0.3–0.5 kg</b>。蛋白質 9 份約 80 克，足夠保住肌肉。<b>這已經是下限，不要再往下砍</b>；2 週後看「洞察 → 計畫進度」再微調。</div>
   </div>
 
-  <div class="phc a" id="ph1"><div class="phtag">PHASE 01</div><div class="pht">打地基</div><div class="phg">8–9 月 · 77 → 73 kg</div>
-    <div class="phi">▸ 目標不是瘦，是<b>連續 30 天不中斷</b><br>▸ 戒糖飲、戒油炸，外食挑對品項<br>▸ 走路 7000 步 + 棒式每天 3 組<br>▸ 每天早上空腹量體重（只看 7 日平均）</div></div>
-  <div class="phc b" id="ph2"><div class="phtag">PHASE 02</div><div class="pht">開始有人發現 · 投影機衝刺</div><div class="phg">10–11 月 · 73 → 68 kg 🏆 中途解鎖 70kg</div>
-    <div class="phi">▸ 主食壓在 9 份以內，蔬菜補到 5 份以上<br>▸ 加入 Tabata 每週 2 次，深蹲升級相撲式<br>▸ 棒式撐到 45–60 秒<br>▸ 📽️ 到 70kg 就去買投影機，說到做到</div></div>
-  <div class="phc c" id="ph3"><div class="phtag">PHASE 03</div><div class="pht">收尾雕線條</div><div class="phg">12 月 · 68 → 65 kg</div>
-    <div class="phi">▸ 維持赤字，重視睡眠與壓力管理<br>▸ 加重阻力訓練保住肌肉<br>▸ 挑戰連續打卡不中斷<br>▸ 3 月伴郎西裝，現在開始練就來得及</div></div>
+  <div class="card">
+    <div class="chd"><div class="ct">⚡ Season 2 升級規則</div><div class="cn">單日最多 55 XP</div></div>
+    <div class="rule"><div class="ri">📝</div><div>記滿 <b>≥2 筆飲食</b> +5　·　量體重 +5　·　每項打卡 +3（最多 15）　·　喝水 8 杯 +5</div></div>
+    <div class="rule"><div class="ri">🍱</div><div><b>營養達標 +10</b>（需 ≥2 筆飲食紀錄佐證，光點份量不算）　·　<b>完美日再 +15</b></div></div>
+    <div class="rule"><div class="ri">🔒</div><div>升級要<b>兩道門都過</b>：XP 夠，而且 <b>7 日均重（≥3 筆體重）≤ 該級門檻</b>。XP 不會消失，體重追上來就會一次升上去</div></div>
+    <div class="rule"><div class="ri">🏁</div><div>LV.10 ＝ 4,900 XP ＋ 65kg。大約要 8 成的日子都是「不錯」以上才走得到</div></div>
+  </div>
+
+  <div class="phc a" id="ph1"><div class="phtag">PHASE 01</div><div class="pht">重啟地基 · 先接上鏈條</div><div class="phg">10/3 – 11/14 · 80.2 → 77.8 kg 💒 婚禮</div>
+    <div class="phi">▸ 目標不是瘦，是<b>14 天內每天記 ≥2 筆食物</b>（記不完整也要記）<br>▸ 拿鐵一天最多 1 杯，油、醬料、含糖飲料照實記<br>▸ 外食挑對品項，走路 7000 步 ＋ 棒式每天 3 組<br>▸ 每天早上空腹量體重（只看 7 日平均）</div></div>
+  <div class="phc b" id="ph2"><div class="phtag">PHASE 02</div><div class="pht">穩定下降 · 開始有人發現</div><div class="phg">11/15 – 3/20 · 77.8 → 70.6 kg 🤵 伴郎</div>
+    <div class="phi">▸ 主食 6–7 份、蔬菜 5 份以上，蛋白質每餐都要有<br>▸ 阻力訓練每週 2–3 次（深蹲、伏地挺身、棒式），保住肌肉<br>▸ 每 2 週看一次計畫進度，落後就先補紀錄、再微調<br>▸ 過年與旅行週以「維持不胖」為目標就算贏</div></div>
+  <div class="phc c" id="ph3"><div class="phtag">PHASE 03</div><div class="pht">收尾期 · 投影機與終點</div><div class="phg">3/21 – 6/26 · 70.6 → 65 kg 📽️ 約 3 月底過 70kg</div>
+    <div class="phi">▸ 到 70kg 就去買投影機，說到做到<br>▸ 體重越輕消耗越少，速度變慢是正常的，不用加碼節食<br>▸ 維持阻力訓練，重視睡眠與壓力管理<br>▸ 到 65kg 後用 4 週慢慢把主食加回 8–9 份</div></div>
 
   <div class="card">
     <div class="chd"><div class="ct">📋 飲食守則</div></div>
     <div class="rule"><div class="ri">🥗</div><div>進食順序 <b>菜 → 肉 → 飯</b>，先吃菜穩血糖</div></div>
     <div class="rule"><div class="ri">🚫</div><div><b>無糖、無炸</b>。手搖改無糖茶或黑咖啡</div></div>
+    <div class="rule"><div class="ri">☕</div><div><b>拿鐵一天最多 1 杯</b>，而且要記。牛奶、糖漿、醬料這些「沒被份量算到的熱量」最容易讓體重卡在原地</div></div>
     <div class="rule"><div class="ri">🕙</div><div><b>睡前 3 小時不吃</b>，餓了喝溫水或無糖茶</div></div>
     <div class="rule"><div class="ri">💧</div><div>每天 <b>2400ml</b> 白開水，臉會消腫</div></div>
     <div class="rule"><div class="ri">🏪</div><div>外食首選：雞胸肉便當、日式定食、滷味（低油）、自助餐夾 2 菜 1 肉</div></div>
@@ -727,7 +796,7 @@ font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
         <div class="shaskt">💕 給女友的誇誇任務</div>
         <div class="shaskb" id="shAsk"></div>
       </div>
-      <div class="shf">MISSION 65 · 變帥作戰中 · 77 → 65 KG</div>
+      <div class="shf">MISSION 65 · SEASON 2 · 80.2 → 65 KG</div>
     </div>
     <div class="macts">
       <button class="mb w" onclick="copyMsg()">📋 複製訊息（貼到 LINE）</button>
@@ -746,18 +815,28 @@ font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 /* ══════ CONFIG ══════ */
-var START_W=77, GOAL_W=65, END_DATE='2026-12-31', PRIZE_W=70, FREEZE_PER_MONTH=3;
+var START_W=80.2, GOAL_W=65, PRIZE_W=70, FREEZE_PER_MONTH=3;
+var SEASON_START='2026-10-03';                        // Season 2 起算日（舊紀錄保留為 Season 1 徽章）
+var PLAN_START='2026-10-03', PLAN_END='2027-06-26';   // 計畫線：80.2 → 65，每週約 0.4kg（依 160cm／33 歲女性估算）
 var CUPS=8, ML=300;                        // 8 杯 × 300ml = 2400ml/天
-var TARGETS={carb:9,protein:9,fruit:3,veg:5};
-var NUTRI={carb:[0,9],protein:[7,99],fruit:[2,99],veg:[4,99]};
-var MAX_XP=105;
+var TARGETS={carb:7,protein:9,fruit:2,veg:5};
+var NUTRI={carb:[4,7],protein:[7,11],fruit:[1,3],veg:[4,99]};   // 營養達標的範圍（含上下限）
+var MAX_XP=55;                                                   // 單日 XP 上限
 var PMETA=[{k:'carb',i:'🌾',n:'主食',c:'#F0A500'},{k:'protein',i:'🥩',n:'蛋白質',c:'#E5384F'},
            {k:'fruit',i:'🍎',n:'水果',c:'#00B26F'},{k:'veg',i:'🥦',n:'蔬菜',c:'#1F6FEB'}];
 var CHECKS=[{k:'sugar',t:'🚫 無糖・無炸'},{k:'late',t:'🕙 睡前 3 小時不吃'},{k:'move',t:'💪 今天有動'},
             {k:'order',t:'🥗 菜 → 肉 → 飯'},{k:'sleep',t:'😴 睡滿 7 小時'}];
-var LEVELS=[[0,'帥之篇章啟動！'],[100,'下巴回來了'],[280,'很持久'],[560,'自律型男'],[950,'體態改造者'],
-            [1450,'美女簇擁者'],[2100,'意志鍛鍊者'],[2900,'西裝撐得起來'],[3900,'回頭率爆表'],[5200,'帥到逆天']];
+/* 運動項目：d = 按一次 ＋ 加多少 */
+var EX=[{k:'pushup',i:'🤸',n:'伏地挺身',u:'下',d:10,h:'膝蓋著地也算'},{k:'plank',i:'🧱',n:'棒式',u:'秒',d:30,h:'一組 30 秒'},
+        {k:'squat',i:'🦵',n:'深蹲',u:'下',d:15,h:'靠牆／相撲都算'},{k:'tabata',i:'🔥',n:'Tabata',u:'輪',d:1,h:'一輪 4 分鐘'},
+        {k:'walk',i:'🚶',n:'走路',u:'步',d:1000,h:'目標 7000 步'},{k:'other',i:'🏃',n:'其他運動',u:'分鐘',d:10,h:'游泳、單車、瑜伽…'}];
+var LEVELS=[[0,'帥之篇章啟動！'],[150,'下巴回來了'],[400,'很持久'],[750,'自律型男'],[1200,'體態改造者'],
+            [1750,'美女簇擁者'],[2400,'意志鍛鍊者'],[3150,'西裝撐得起來'],[4000,'回頭率爆表'],[4900,'帥到逆天']];
+/* 升級的第二道門：7 日均重（≥3 筆體重）要 ≤ 這個數字。XP 夠、體重沒到，就卡在門外等 */
+var GATES=[999,79,77,75,73,71,70,68,66,65];
+var OLD_LV=[0,100,280,560,950,1450,2100,2900,3900,5200];     // Season 1 舊門檻（只用來結算舊紀錄）
 var MILESTONES=[
+ {id:'w78',w:78,e:'🌱',t:'重新出發',d:'回到軌道上，比從沒掉下來更不容易',r:'一杯你喜歡的無糖茶'},
  {id:'w76',w:76,e:'🚀',t:'帥氣啟程',d:'第一公斤最難，你已經跨過去了',r:'誇誇券 ×1'},
  {id:'w74',w:74,e:'👖',t:'褲頭鬆一格',d:'還沒人看出來，但你自己知道',r:'買一件新運動上衣'},
  {id:'w72',w:72,e:'🔪',t:'下顎線出現',d:'一半的路走完，臉開始有稜角了',r:'拍一組體態對比照'},
@@ -782,16 +861,16 @@ var REASONS=[
 /* 一週訓練菜單（週一起算） */
 var WEEK=[
  {d:'一',t:'棒式 3 組 ＋ 走路 7000 步'},
- {d:'二',t:'棒式 3 組 ＋ 靠牆深蹲 3 次'},
+ {d:'二',t:'棒式 3 組 ＋ 靠牆深蹲 3 次 ＋ 伏地挺身 10 下 × 2 組'},
  {d:'三',t:'Tabata 2–3 輪 ＋ 走路'},
  {d:'四',t:'棒式 3 組 ＋ 膝蓋伏地挺身 10 下'},
- {d:'五',t:'棒式 3 組 ＋ 相撲深蹲 3 組'},
+ {d:'五',t:'棒式 3 組 ＋ 相撲深蹲 3 組 ＋ 伏地挺身 10 下 × 2 組'},
  {d:'六',t:'Tabata 或 戶外走路 40 分鐘'},
  {d:'日',t:'休息恢復 ＋ 輕鬆散步',rest:1}];
 /* 有期限的兩場硬仗 */
 var BATTLES=[
- {d:'2026-11-14',e:'💒',t:'前女友婚禮',s:'那天走進去，要讓全場多看兩眼'},
- {d:'2027-03-20',e:'🤵',t:'當伴郎',s:'西裝要撐得起來，不是被撐開'}];
+ {d:'2026-11-14',w:77.8,e:'💒',t:'前女友婚禮',s:'那天走進去，要讓全場多看兩眼'},
+ {d:'2027-03-20',w:70.6,e:'🤵',t:'當伴郎',s:'西裝要撐得起來，不是被撐開'}];
 var ASKS=[
 '請用 3 個形容詞誇我的意志力，而且不能重複用「厲害」。',
 '請說出你最近觀察到我身上「一個具體的改變」，越細節越好。',
@@ -827,7 +906,7 @@ var DEF_MEALS=[
  {n:'雞胸肉便當',p:{carb:3,protein:2,veg:1}},
  {n:'滿福堡加蛋',p:{carb:2,protein:3}},
  {n:'肉蛋吐司',p:{carb:3,protein:3}},
- {n:'拿鐵',p:{protein:2}},
+ {n:'拿鐵',p:{protein:1}},
  {n:'地瓜',p:{carb:2}},
  {n:'香蕉',p:{fruit:2}},
  {n:'燙青菜',p:{veg:1}},
@@ -851,7 +930,7 @@ function mmdd(s){ var p=s.split('-'); return (+p[1])+'/'+(+p[2]); }
 function ym(s){ return s.slice(0,7); }
 function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function jc(o){ return JSON.parse(JSON.stringify(o)); }
-function blank(){ return {p:{carb:0,protein:0,fruit:0,veg:0},f:[],c:{},w:0,wm:'',wn:'',n:''}; }
+function blank(){ return {p:{carb:0,protein:0,fruit:0,veg:0},f:[],c:{},e:{},w:0,wm:'',wn:'',n:''}; }
 
 /* ══════ STORAGE ══════ */
 function rd(k,d){ try{ var v=JSON.parse(localStorage.getItem(k)); return v==null?d:v; }catch(e){ return d; } }
@@ -864,9 +943,15 @@ function loadAll(){
   if(!SET.id || OLD_IDS.indexOf(SET.id)>=0) SET.id=DEF_ID;
   if(!SET.stack) SET.stack=DEF_STACK;
   if(!Array.isArray(SET.meals)||!SET.meals.length) SET.meals=jc(DEF_MEALS);
+  fixLatte();
   var old=rd('mission65',null);
   if(old && !localStorage.getItem('m65_days')){ DB=old; sDB(); }
 }
+/* 一杯拿鐵的蛋白質約 1 份（另有乳糖與乳脂），舊設定記成 2 份會高估。只修正一次，之後你自己改的不會被動到 */
+function fixLatte(){ if(SET.latteFix) return; var i,m,k,n;
+  for(i=0;i<SET.meals.length;i++){ m=SET.meals[i]; n=0; for(k in m.p) n++;
+    if(m.n==='拿鐵'&&n===1&&m.p.protein===2) m.p.protein=1; }
+  SET.latteFix=1; try{ localStorage.setItem('m65_set',JSON.stringify(SET)); }catch(e){} }
 function sDB(){ localStorage.setItem('m65_days',JSON.stringify(DB)); bust(); }
 function sPK(){ localStorage.setItem('m65_praise',JSON.stringify(PK)); }
 function sCL(){ localStorage.setItem('m65_claimed',JSON.stringify(CLAIMED)); bust(); }
@@ -877,48 +962,111 @@ function dates(){ return _c.d||(_c.d=Object.keys(DB).sort()); }
 function ckCount(v){ var n=0,c=(v&&v.c)||{},k; for(k in c) if(c[k]) n++; return n; }
 function pSum(v){ var p=(v&&v.p)||{},s=0,k; for(k in p) s+=(p[k]||0); return s; }
 function logged(v){ if(!v) return false;
-  return pSum(v)>0 || (v.f&&v.f.length>0) || ckCount(v)>0 || (v.w||0)>0 || (v.wm&&parseFloat(v.wm)>0); }
-function nutriOK(v){ var p=v&&v.p; if(!p) return false;
-  for(var k in NUTRI){ var x=p[k]||0; if(x<=0||x<NUTRI[k][0]||x>NUTRI[k][1]) return false; } return true; }
-function perfect(v){ return ckCount(v)>=4 && nutriOK(v); }
-/* 三級日 */
-function tier(v){
+  return pSum(v)>0 || (v.f&&v.f.length>0) || ckCount(v)>0 || (v.w||0)>0 || (v.wm&&parseFloat(v.wm)>0) || exOn(v); }
+function exOn(v){ var e=(v&&v.e)||{},k; for(k in e) if(e[k]>0) return true; return false; }
+function wOf(v){ var x=parseFloat(v&&v.wm); return (x>30&&x<300)?x:0; }
+/* 「有佐證」：至少 2 筆飲食紀錄。光靠手動點份量、不記吃了什麼，不算營養達標、也不算連續 */
+function evid(v){ return !!(v&&v.f&&v.f.length>=2); }
+function nutriOK(v){ var p=v&&v.p; if(!p||!evid(v)) return false;
+  for(var k in NUTRI){ var x=p[k]||0; if(x<NUTRI[k][0]||x>NUTRI[k][1]) return false; } return true; }
+function perfect(v){ return !!v && ckCount(v)>=4 && nutriOK(v) && (v.w||0)>=6; }
+
+/* ── Season 1 舊規則：只用來保留舊紀錄的等級徽章、日曆顏色與「已賺但還沒兌換」的誇誇券 ── */
+function oNutri(v){ var p=v&&v.p; if(!p) return false; var O={carb:[0,9],protein:[7,99],fruit:[2,99],veg:[4,99]};
+  for(var k in O){ var x=p[k]||0; if(x<=0||x<O[k][0]||x>O[k][1]) return false; } return true; }
+function oPerfect(v){ return ckCount(v)>=4 && oNutri(v); }
+function oTier(v){ if(!logged(v)) return 0; if(oPerfect(v)) return 3; if(ckCount(v)>=3||oNutri(v)) return 2; return 1; }
+function oDayXP(v){
   if(!logged(v)) return 0;
-  if(ckCount(v)>=4 && nutriOK(v)) return 3;
-  if(ckCount(v)>=3 || nutriOK(v)) return 2;
-  return 1;
-}
-function dayXP(v){
-  if(!logged(v)) return 0;
-  var x=10 + ckCount(v)*5;
+  var x=10+ckCount(v)*5;
   if(v.wm&&parseFloat(v.wm)>0) x+=10;
   if((v.w||0)>=CUPS) x+=10;
-  if(nutriOK(v)) x+=20;
-  if(perfect(v)) x+=30;
+  if(oNutri(v)) x+=20;
+  if(oPerfect(v)) x+=30;
   return x;
 }
+function legacy(){
+  if(_c.lg) return _c.lg;
+  var ds=dates().filter(function(d){ return d<SEASON_START; }),i,v,d,xp=0,out=[],lv=1;
+  for(i=0;i<ds.length;i++) xp+=oDayXP(DB[ds[i]]);
+  for(i=0;i<OLD_LV.length;i++) if(xp>=OLD_LV[i]) lv=i+1;
+  for(i=2;i<=lv;i++) out.push({key:'l:'+i,e:'⚡',t:'升級到 LV.'+i+' '+LEVELS[i-1][1],
+    s:'累積 '+OLD_LV[i-1]+' XP，每一分都是自己賺的',b:'等級突破'});
+  for(i=0;i<ds.length;i++){ d=ds[i]; v=DB[d];
+    if(oPerfect(v)) out.push({key:'p:'+d,e:'🥇',t:'完美的一天',s:mmdd(d)+' 打卡 '+ckCount(v)+'/5 ＋ 營養達標',b:'完美日'});
+    else if(oNutri(v)) out.push({key:'n:'+d,e:'🍱',t:'營養達標日',s:mmdd(d)+' 四大份量全部到位',b:'營養達標'});
+  }
+  var g={},k;
+  for(i=0;i<ds.length;i++){ var wm=parseFloat(DB[ds[i]].wm); if(wm>0){ k=weekStart(ds[i]); (g[k]=g[k]||[]).push(wm); } }
+  var wks=Object.keys(g).sort(), avg=function(a){ var t=0,j; for(j=0;j<a.length;j++) t+=a[j]; return t/a.length; };
+  for(i=1;i<wks.length;i++){
+    var drop=avg(g[wks[i-1]])-avg(g[wks[i]]);
+    if(drop>=0.3) out.push({key:'k:'+wks[i],e:'📉',t:'本週有進展',s:mmdd(wks[i])+' 那週平均下降 '+drop.toFixed(1)+' kg',b:'週減達標'});
+  }
+  return (_c.lg={xp:xp,lv:lv,days:ds.length,tickets:out});
+}
+
+/* ── Season 2 ── */
+function tier(v,d){
+  if(d&&d<SEASON_START) return oTier(v);
+  if(!logged(v)) return 0;
+  if(perfect(v)) return 3;
+  if(ckCount(v)>=3||nutriOK(v)) return 2;
+  return 1;
+}
+/* 單日最多 55：有佐證的飲食紀錄 5、體重 5、打卡 3×5、水 5、營養達標 10、完美日 15 */
+function dayXP(v){
+  if(!logged(v)) return 0;
+  var x=0;
+  if(evid(v)) x+=5;
+  if(wOf(v)>0) x+=5;
+  x+=Math.min(5,ckCount(v))*3;
+  if((v.w||0)>=CUPS) x+=5;
+  if(nutriOK(v)) x+=10;
+  if(perfect(v)) x+=15;
+  return x;
+}
+function sdates(){ return _c.sd||(_c.sd=dates().filter(function(d){ return d>=SEASON_START; })); }
 function totalXP(){
   if(_c.xp!==undefined) return _c.xp;
-  var ds=dates(),s=0,i; for(i=0;i<ds.length;i++) s+=dayXP(DB[ds[i]]);
+  var ds=sdates(),s=0,i; for(i=0;i<ds.length;i++) s+=dayXP(DB[ds[i]]);
   return (_c.xp=s);
 }
-function levelOf(xp){
-  var i=0; for(;i<LEVELS.length;i++) if(xp<LEVELS[i][0]) break;
-  var idx=Math.max(0,i-1);
-  return {i:idx+1,name:LEVELS[idx][1],base:LEVELS[idx][0],
-          next:idx+1<LEVELS.length?LEVELS[idx+1][0]:null};
+/* 賽季內「最佳 7 日均重」：任一個 7 天視窗內至少 3 筆體重才算。只降不升，等級不會因為一天水腫就掉 */
+function bestW(){
+  if(_c.bw!==undefined) return _c.bw;
+  var ds=sdates(),best=null,i,j,d,n,t,v,x;
+  for(i=0;i<ds.length;i++){
+    if(!(wOf(DB[ds[i]])>0)) continue;
+    d=pd(ds[i]); n=0; t=0;
+    for(j=0;j<7;j++){
+      var k=fmt(d); if(k>=SEASON_START){ v=DB[k]; x=v?wOf(v):0; if(x>0){ t+=x; n++; } }
+      d.setDate(d.getDate()-1);
+    }
+    if(n>=3){ var a=t/n; if(best===null||a<best) best=a; }
+  }
+  return (_c.bw=best);
 }
-/* 護級卡：往回走，缺的那天若當月額度還有、且更早一天有紀錄，就凍結 */
+function gateW(){ var b=bestW(); return b===null?START_W:b; }
+function levelOf(xp){
+  var w=gateW(),idx=0,i;
+  for(i=0;i<LEVELS.length;i++){ if(xp>=LEVELS[i][0]&&w<=GATES[i]) idx=i; else break; }
+  var hasNext=idx+1<LEVELS.length;
+  return {i:idx+1,name:LEVELS[idx][1],base:LEVELS[idx][0],
+          next:hasNext?LEVELS[idx+1][0]:null, nGate:hasNext?GATES[idx+1]:null,
+          gateOK:hasNext&&w<=GATES[idx+1], w:w};
+}
+/* 護級卡：往回走，缺的那天若當月額度還有、且更早一天有紀錄，就凍結。有效日＝至少 2 筆飲食紀錄 */
 function streakInfo(){
   if(_c.si) return _c.si;
   var n=0,used={},list=[],d=new Date(),guard=0;
-  if(!DB[fmt(d)]) d.setDate(d.getDate()-1);
+  if(!evid(DB[fmt(d)])) d.setDate(d.getDate()-1);
   while(guard++<400){
     var k=fmt(d);
-    if(DB[k]){ n++; }
+    if(evid(DB[k])){ n++; }
     else{
       var m=ym(k), prev=new Date(d); prev.setDate(prev.getDate()-1);
-      if((used[m]||0)<FREEZE_PER_MONTH && DB[fmt(prev)]){ used[m]=(used[m]||0)+1; list.push(k); }
+      if((used[m]||0)<FREEZE_PER_MONTH && evid(DB[fmt(prev)])){ used[m]=(used[m]||0)+1; list.push(k); }
       else break;
     }
     d.setDate(d.getDate()-1);
@@ -932,7 +1080,7 @@ function avgW(endDate,win){
   var d=pd(endDate||today()),vals=[],i;
   for(i=0;i<(win||7);i++){
     var v=DB[fmt(d)];
-    if(v&&v.wm&&parseFloat(v.wm)>0) vals.push(parseFloat(v.wm));
+    if(v&&wOf(v)>0) vals.push(wOf(v));
     d.setDate(d.getDate()-1);
   }
   if(!vals.length) return null;
@@ -948,6 +1096,9 @@ function latestW(){
   return (_c.w=START_W);
 }
 function trendW(){ var a=avgW(today(),7); return a==null?latestW():a; }
+function planW(ds){ var a=pd(PLAN_START).getTime(),b=pd(PLAN_END).getTime(),t=pd(ds).getTime();
+  if(t<=a) return START_W; if(t>=b) return GOAL_W; return START_W-(START_W-GOAL_W)*(t-a)/(b-a); }
+function wCount7(){ var d=new Date(),n=0,i,v; for(i=0;i<7;i++){ v=DB[fmt(d)]; if(v&&wOf(v)>0) n++; d.setDate(d.getDate()-1); } return n; }
 function weekStart(ds){ var d=pd(ds); d.setDate(d.getDate()-((d.getDay()+6)%7)); return fmt(d); }
 /* 停滯偵測：14 天內有 8 天以上紀錄，但體重 7 日均變化 < 0.25 */
 function plateau(){
@@ -957,7 +1108,7 @@ function plateau(){
   for(i=0;i<14;i++){ if(DB[fmt(d)]) logs++; d.setDate(d.getDate()-1); }
   if(logs>=8 && Math.abs(b-a)<0.25){
     var gold=0,dd=new Date();
-    for(i=0;i<14;i++){ if(tier(DB[fmt(dd)])===3) gold++; dd.setDate(dd.getDate()-1); }
+    for(i=0;i<14;i++){ if(tier(DB[fmt(dd)],fmt(dd))===3) gold++; dd.setDate(dd.getDate()-1); }
     return {logs:logs,gold:gold};
   }
   return null;
@@ -966,24 +1117,24 @@ function plateau(){
 /* ══════ 誇誇券 ══════ */
 function earned(){
   if(_c.e) return _c.e;
-  var out=[],w=latestW(),s=streak(),ds=dates(),i,v,d,m;
+  var out=legacy().tickets.slice(),P='S2:',w=gateW(),s=streak(),ds=sdates(),i,v,d,m;
   for(i=0;i<MILESTONES.length;i++){ m=MILESTONES[i]; if(w<=m.w)
-    out.push({key:'w:'+m.id,e:m.e,t:m.t,s:m.d+'　🎁 '+m.r,b:'體重里程碑'}); }
+    out.push({key:P+'w:'+m.id,e:m.e,t:m.t,s:m.d+'　🎁 '+m.r,b:'體重里程碑'}); }
   for(i=0;i<HABITS.length;i++){ m=HABITS[i]; if(s>=m.n)
-    out.push({key:'s:'+m.id,e:m.e,t:m.t,s:m.d,b:'習慣里程碑'}); }
+    out.push({key:P+'s:'+m.id,e:m.e,t:m.t,s:m.d,b:'習慣里程碑'}); }
   var lv=levelOf(totalXP()).i;
-  for(i=2;i<=lv;i++) out.push({key:'l:'+i,e:'⚡',t:'升級到 LV.'+i+' '+LEVELS[i-1][1],
-    s:'累積 '+LEVELS[i-1][0]+' XP，每一分都是自己賺的',b:'等級突破'});
+  for(i=2;i<=lv;i++) out.push({key:P+'l:'+i,e:'⚡',t:'升級到 LV.'+i+' '+LEVELS[i-1][1],
+    s:'XP '+LEVELS[i-1][0]+' ＋ 7 日均重 ≤ '+GATES[i-1]+'kg，兩道門都過了',b:'等級突破'});
   for(i=0;i<ds.length;i++){ d=ds[i]; v=DB[d];
-    if(perfect(v)) out.push({key:'p:'+d,e:'🥇',t:'完美的一天',s:mmdd(d)+' 打卡 '+ckCount(v)+'/5 ＋ 營養達標',b:'完美日'});
-    else if(nutriOK(v)) out.push({key:'n:'+d,e:'🍱',t:'營養達標日',s:mmdd(d)+' 四大份量全部到位',b:'營養達標'});
+    if(perfect(v)) out.push({key:P+'p:'+d,e:'🥇',t:'完美的一天',s:mmdd(d)+' 打卡 '+ckCount(v)+'/5 ＋ 營養達標 ＋ 水 '+(v.w||0)+' 杯',b:'完美日'});
+    else if(nutriOK(v)) out.push({key:P+'n:'+d,e:'🍱',t:'營養達標日',s:mmdd(d)+' 四大份量到位，而且有紀錄佐證',b:'營養達標'});
   }
   var g={},k;
-  for(i=0;i<ds.length;i++){ var wm=parseFloat(DB[ds[i]].wm); if(wm>0){ k=weekStart(ds[i]); (g[k]=g[k]||[]).push(wm); } }
+  for(i=0;i<ds.length;i++){ var wm=wOf(DB[ds[i]]); if(wm>0){ k=weekStart(ds[i]); (g[k]=g[k]||[]).push(wm); } }
   var wks=Object.keys(g).sort(), avg=function(a){ var t=0,j; for(j=0;j<a.length;j++) t+=a[j]; return t/a.length; };
   for(i=1;i<wks.length;i++){
     var drop=avg(g[wks[i-1]])-avg(g[wks[i]]);
-    if(drop>=0.3) out.push({key:'k:'+wks[i],e:'📉',t:'本週有進展',s:mmdd(wks[i])+' 那週平均下降 '+drop.toFixed(1)+' kg',b:'週減達標'});
+    if(drop>=0.3) out.push({key:P+'k:'+wks[i],e:'📉',t:'本週有進展',s:mmdd(wks[i])+' 那週平均下降 '+drop.toFixed(1)+' kg',b:'週減達標'});
   }
   return (_c.e=out);
 }
@@ -1005,7 +1156,7 @@ function go(i){
   window.scrollTo(0,0);
   if(i===1){ renderCal(); renderStats(); renderLevels(); renderMs(); }
   if(i===2) renderLove();
-  if(i===3){ renderHistory(); renderChart(); renderChart2(); renderSync(); }
+  if(i===3){ renderPace(); renderHistory(); renderChart(); renderChart2(); renderSync(); }
   if(i===4){ $('stackShow').textContent=SET.stack; renderPlanWhy(); }
 }
 function badge(){
@@ -1014,22 +1165,27 @@ function badge(){
 }
 
 /* ══════ AUTOSAVE ══════ */
+var lastLv=0,lastAv=0;
+function typingW(){ var a=document.activeElement; return !!(a&&(a.id==='wM'||a.id==='wN')); }
+function syncProgress(){ lastLv=levelOf(totalXP()).i; lastAv=avail().length; }
+/* 升級／拿券的提示：體重欄位打字中先不判斷，離開欄位才結算（避免 "7" → "79" → "79.8" 的中途誤報） */
+function checkProgress(){
+  if(typingW()) return;
+  var L=levelOf(totalXP()).i, A=avail().length;
+  if(L>lastLv) toast('⚡ 升級！LV.'+L+' 「'+LEVELS[L-1][1]+'」');
+  else if(A>lastAv) toast('🎟️ 賺到 '+(A-lastAv)+' 張誇誇券！去「誇誇」分頁換讚美 💕');
+  lastLv=L; lastAv=A;
+}
 function touch(){
   day.wm=$('wM').value; day.wn=$('wN').value; day.n=$('note').value;
-  var beforeT=avail().length, beforeL=levelOf(totalXP()).i, beforeX=totalXP();
+  var beforeX=totalXP();
   DB[cur]=jc(day); sDB();
   var gainX=totalXP()-beforeX;
   refreshHUD();
-  var t=$('savedTag');
-  t.textContent='✓ 已自動儲存 '+new Date().toTimeString().slice(0,5);
+  $('savedTag').textContent='✓ 已自動儲存 '+new Date().toTimeString().slice(0,5);
   if(gainX>0) popXP(gainX);
   queueSync();
-  var afterL=levelOf(totalXP()).i;
-  if(afterL>beforeL) toast('⚡ 升級！LV.'+afterL+' 「'+LEVELS[afterL-1][1]+'」');
-  else{
-    var gt=avail().length-beforeT;
-    if(gt>0) toast('🎟️ 賺到 '+gt+' 張誇誇券！去「誇誇」分頁換讚美 💕');
-  }
+  checkProgress();
   badge();
 }
 function popXP(n){
@@ -1050,14 +1206,14 @@ function refreshHUD(){
   $('idVote').innerHTML='🗳️ 已投下 <b>'+dates().filter(function(d){return logged(DB[d]);}).length+'</b> 票';
   $('lvN').textContent='LV.'+L.i; $('lvT').textContent=L.name;
   if(L.next){
-    $('lvFill').style.width=Math.min(100,(xp-L.base)/(L.next-L.base)*100)+'%';
-    $('lvXP').textContent=xp+' / '+L.next+' XP';
+    $('lvFill').style.width=Math.max(0,Math.min(100,(xp-L.base)/(L.next-L.base)*100))+'%';
+    $('lvXP').textContent=(xp>=L.next&&!L.gateOK)?('🔒 7日均需 ≤ '+L.nGate+'kg'):(xp+' / '+L.next+' XP');
   } else { $('lvFill').style.width='100%'; $('lvXP').textContent=xp+' XP · MAX'; }
 
   var x=dayXP(day), pct=Math.min(100,Math.round(x/MAX_XP*100));
   $('ringP').textContent=pct+'%';
   $('ringArc').setAttribute('stroke-dashoffset',232.5*(1-pct/100));
-  var t=tier(day);
+  var t=tier(day,cur);
   $('tier1').classList.toggle('on',t>=1);
   $('tier2').classList.toggle('on',t>=2);
   $('tier3').classList.toggle('on',t>=3);
@@ -1068,7 +1224,8 @@ function refreshHUD(){
     dl.textContent=(df<=0?'▼ ':'▲ ')+Math.abs(df).toFixed(1);
     dl.style.color=df<=0?'#3BE8A8':'#FF9CAA';
   } else dl.textContent='';
-  $('wSub').textContent='7 日平均 · 單日會因水分波動 ±1kg';
+  var pl=planW(today()), gp=tw-pl;
+  $('wSub').textContent='7 日平均 · 今日計畫線 '+pl.toFixed(1)+(gp>0.05?'（落後 '+gp.toFixed(1)+'）':'（持平或領先）');
 
   $('cStreak').textContent=si.n;
   $('cFreeze').textContent=si.left;
@@ -1087,14 +1244,23 @@ function renderAlerts(){
       (bd===null?'':'（上次備份：'+bd+' 天前）')+
       '<br>到「洞察」分頁最下面，一次設定就永久解決。</div></div></div>';
   }
-  /* never miss twice */
-  var y=new Date(); y.setDate(y.getDate()-1); var yk=fmt(y);
-  if(!DB[yk] && dates().length>0){
-    var si=streakInfo(), frozen=si.used.indexOf(yk)>=0;
-    h+='<div class="alert al-warn"><div class="alert-i">'+(frozen?'🛡️':'⚠️')+'</div><div><div class="alert-t">'+
-      (frozen?'昨天沒記錄 — 已自動用掉 1 張護級卡':'昨天沒記錄')+'</div>'+
-      '<div class="alert-d"><b>絕不連續錯過兩次。</b>漏一天不算什麼，漏兩天就是「放棄」這個習慣的開始。今天隨便記一項，鏈條就接回來了。'+
-      (frozen?'（本月護級卡剩 '+si.left+' 張）':'')+'</div></div></div>';
+  /* 回歸 / never miss twice —— 以「有效日（≥2 筆飲食紀錄）」為準 */
+  var allD=dates(), lastV=null, gi;
+  for(gi=allD.length-1;gi>=0;gi--) if(evid(DB[allD[gi]])){ lastV=allD[gi]; break; }
+  if(lastV){
+    var gap=Math.round((pd(today())-pd(lastV))/864e5);
+    var y=new Date(); y.setDate(y.getDate()-1); var yk=fmt(y);
+    if(gap>=3){
+      h+='<div class="alert al-ice"><div class="alert-i">🤝</div><div><div class="alert-t">歡迎回來 · 上次完整記錄是 '+gap+' 天前</div>'+
+        '<div class="alert-d">不用補記，也不用責怪自己 —— 中斷是任何計畫都會遇到的事。<b>今天先記 2 筆食物</b>，鏈條就重新開始。'+
+        '真正要守住的只有一件事：<b>絕不連續錯過兩次</b>。</div></div></div>';
+    } else if(gap>=1 && !evid(DB[yk])){
+      var si=streakInfo(), frozen=si.used.indexOf(yk)>=0;
+      h+='<div class="alert al-warn"><div class="alert-i">'+(frozen?'🛡️':'⚠️')+'</div><div><div class="alert-t">'+
+        (frozen?'昨天沒完整記錄 — 已自動用掉 1 張護級卡':'昨天沒完整記錄')+'</div>'+
+        '<div class="alert-d"><b>絕不連續錯過兩次。</b>漏一天不算什麼，漏兩天就是「放棄」這個習慣的開始。今天記 2 筆食物，鏈條就接回來了。'+
+        (frozen?'（本月護級卡剩 '+si.left+' 張）':'')+'</div></div></div>';
+    }
   }
   /* plateau */
   var p=plateau();
@@ -1144,21 +1310,21 @@ function renderWeek(){
 function renderPlanWhy(){
   var h='',i;
   renderWeek();
-  var mo=new Date().getMonth()+1;                       // 標記目前進行中的階段
-  $('ph1').classList.toggle('now',mo<=9);
-  $('ph2').classList.toggle('now',mo>=10&&mo<=11);
-  $('ph3').classList.toggle('now',mo===12);
+  var td=today();                                        // 標記目前進行中的階段
+  $('ph1').classList.toggle('now',td<='2026-11-14');
+  $('ph2').classList.toggle('now',td>'2026-11-14'&&td<='2027-03-20');
+  $('ph3').classList.toggle('now',td>'2027-03-20');
   for(i=0;i<REASONS.length;i++)
     h+='<div class="rsn"><div class="rsnn">'+(i+1)+'.</div><div class="rsne">'+REASONS[i].e+'</div><div>'+esc(REASONS[i].t)+'</div></div>';
   $('reasonList').innerHTML=h;
   h='';
   for(i=0;i<BATTLES.length;i++){
     var b=BATTLES[i], d=daysTo(b.d), tw=trendW();
-    var need=Math.max(0,tw-GOAL_W), rate=d>0?(need/(d/7)).toFixed(2):0;
+    var need=Math.max(0,tw-b.w), rate=d>0?(need/(d/7)).toFixed(2):0;
     h+='<div class="ms'+(d<=0?' dn':'')+'"><div class="msw" style="font-size:20px">'+(d>0?d:'✓')+
        '<span style="font-size:10px">'+(d>0?'天':'')+'</span></div>'+
        '<div class="msb"><div class="mst">'+b.e+' '+esc(b.t)+'</div>'+
-       '<div class="msd">'+esc(b.s)+'<br>'+(d>0?('剩 '+Math.floor(d/7)+' 週 · 每週減 '+rate+'kg 就能達標'):'今天就是了')+'</div></div></div>';
+       '<div class="msd">'+esc(b.s)+'<br>'+(d>0?('剩 '+Math.floor(d/7)+' 週 · 目標 '+b.w+'kg，每週減 '+rate+'kg 就能達標'):'今天就是了')+'</div></div></div>';
   }
   $('battleList').innerHTML=h;
 }
@@ -1181,6 +1347,7 @@ function openDay(){
   if(!day.p) day.p={carb:0,protein:0,fruit:0,veg:0};
   if(!day.f) day.f=[];
   if(!day.c) day.c={};
+  if(!day.e||day.e.constructor!==Object) day.e={};
   if(typeof day.w!=='number') day.w=0;
   var d=pd(cur);
   $('dtMain').textContent=(d.getMonth()+1)+' 月 '+d.getDate()+' 日 · 週'+WD[d.getDay()];
@@ -1188,7 +1355,7 @@ function openDay(){
   $('wM').value=day.wm||''; $('wN').value=day.wn||''; $('note').value=day.n||'';
   $('savedTag').textContent=DB[cur]?'✓ 已儲存':'✓ 自動儲存中';
   _c.w=undefined;
-  renderMeals(); renderPortions(); renderWater(); renderFoods(); renderChecks(); refreshHUD(); badge();
+  renderMeals(); renderPortions(); renderWater(); renderFoods(); renderEx(); renderChecks(); refreshHUD(); badge(); syncProgress();
 }
 
 /* ══════ QUICK MEALS ══════ */
@@ -1203,7 +1370,7 @@ function applyMeal(i){
   var m=SET.meals[i]; if(!m) return;
   var k,d=new Date();
   for(k in m.p) day.p[k]=(day.p[k]||0)+m.p[k];
-  day.f.push({t:m.n,time:String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')});
+  day.f.push({t:m.n,time:String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'),p:jc(m.p)});
   renderPortions(); renderFoods(); touch();
 }
 function addMeal(){
@@ -1224,20 +1391,32 @@ function delMeal(ev,i){
 }
 
 /* ══════ RENDER: today ══════ */
+function fnum(x){ return String(Math.round(x*10)/10); }
+/* 今天還剩多少：rem>0 還能吃；達標到上限之間算 OK；超過上限才警告（蔬菜沒有上限） */
+function remOf(k){
+  var v=day.p[k]||0, tg=TARGETS[k], mx=NUTRI[k][1], rem=tg-v;
+  if(v>mx) return {st:'over',n:v-mx,txt:'超過上限 '+fnum(v-mx)+' 份'};
+  if(rem>0) return {st:'left',n:rem,txt:(k==='veg'?'還差 ':'還剩 ')+fnum(rem)+' 份'};
+  return {st:'ok',n:0,txt:'已達標 ✓'};
+}
 function renderPortions(){
-  var h='',i,m,v,tg,over,hit,col;
+  var h='',t='',i,m,v,tg,r,over,col;
   for(i=0;i<PMETA.length;i++){
-    m=PMETA[i]; v=day.p[m.k]||0; tg=TARGETS[m.k]; over=v>tg; hit=v>=tg;
+    m=PMETA[i]; v=day.p[m.k]||0; tg=TARGETS[m.k]; r=remOf(m.k); over=r.st==='over';
     col=over?'#E5384F':(v>0?m.c:'#93A9C2');
     h+='<div class="pr"><div class="pt"><div class="pn">'+m.i+' '+m.n+'</div>'+
-      '<div class="pg" style="'+(over?'color:#E5384F':(hit?'color:#00B26F':''))+'">'+v+' / '+tg+' 份'+(over?' ⚠️':(hit?' ✓':''))+'</div></div>'+
+      '<div class="pg" style="'+(over?'color:#E5384F':(r.st==='ok'?'color:#00B26F':''))+'">'+fnum(v)+' / '+tg+' 份 · <b>'+r.txt+'</b>'+(over?' ⚠️':'')+'</div></div>'+
       '<div class="pc"><button class="pbt mi" onclick="pAdd(\''+m.k+'\',-1)">−</button>'+
-      '<div class="pnum" style="color:'+col+'">'+v+'</div>'+
+      '<div class="pnum" style="color:'+col+'">'+fnum(v)+'</div>'+
       '<button class="pbt pu" onclick="pAdd(\''+m.k+'\',1)">＋</button>'+
       '<div class="pbar"><div class="pfill" style="width:'+(over?100:Math.min(100,v/tg*100))+'%;background:'+
       (over?'linear-gradient(90deg,#FF7A8C,#E5384F)':'linear-gradient(90deg,'+m.c+'99,'+m.c+')')+'"></div></div></div></div>';
+    t+='<div class="tgi"><div class="tgn" style="color:'+(over?'#E5384F':(r.st==='ok'?'#00B26F':m.c))+'">'+
+      (over?'+'+fnum(r.n):(r.st==='ok'?'✓':fnum(r.n)))+'</div><div class="tgl">'+m.i+' '+m.n+
+      (over?'超過':(r.st==='ok'?'達標':(m.k==='veg'?'還差':'還剩')))+'</div></div>';
   }
   $('pList').innerHTML=h;
+  $('remBox').innerHTML=t;
 }
 function pAdd(k,n){ day.p[k]=Math.max(0,(day.p[k]||0)+n); renderPortions(); touch(); }
 function renderWater(){
@@ -1266,7 +1445,28 @@ function addFood(){
   day.f.push({t:v,time:String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')});
   el.value=''; renderFoods(); touch();
 }
-function fDel(i){ day.f.splice(i,1); renderFoods(); touch(); }
+function fDel(i){ var x=day.f[i],k;
+  if(x&&x.p) for(k in x.p) day.p[k]=Math.max(0,Math.round(((day.p[k]||0)-x.p[k])*10)/10);   // 一鍵記錄加的份量一併扣回
+  day.f.splice(i,1); renderPortions(); renderFoods(); touch(); }
+function renderEx(){
+  var h='',i,x,v,n=0;
+  for(i=0;i<EX.length;i++){ x=EX[i]; v=day.e[x.k]||0; if(v>0) n++;
+    h+='<div class="exr"><div class="exn">'+x.i+' '+x.n+'<span>'+x.h+' · 每次 ＋'+x.d+' '+x.u+'</span></div>'+
+      '<button class="pbt mi" onclick="exAdd(\''+x.k+'\',-1)">−</button>'+
+      '<div class="exv'+(v>0?' on':'')+'">'+v+'<small>'+x.u+'</small></div>'+
+      '<button class="pbt pu" onclick="exAdd(\''+x.k+'\',1)">＋</button></div>'; }
+  $('exList').innerHTML=h;
+  $('exCount').textContent=n?('今天 '+n+' 項'):'還沒記錄';
+}
+function exAdd(k,n){
+  var x=null,i; for(i=0;i<EX.length;i++) if(EX[i].k===k) x=EX[i];
+  if(!x) return;
+  var was=exOn(day);
+  day.e[k]=Math.max(0,(day.e[k]||0)+n*x.d);
+  if(!day.e[k]) delete day.e[k];
+  if(exOn(day)!==was) day.c.move=exOn(day);        // 有運動紀錄 → 自動勾「今天有動」；全部清掉 → 取消
+  renderEx(); renderChecks(); touch();
+}
 function renderChecks(){
   var h='',i,c;
   for(i=0;i<CHECKS.length;i++){ c=CHECKS[i];
@@ -1286,7 +1486,7 @@ function renderCal(){
   for(i=0;i<first;i++) h+='<div class="cd em"></div>';
   for(i=1;i<=n;i++){
     ds=calY+'-'+String(calM+1).padStart(2,'0')+'-'+String(i).padStart(2,'0');
-    v=DB[ds]; cls='cd'; t=tier(v);
+    v=DB[ds]; cls='cd'; t=tier(v,ds);
     if(t) cls+=' t'+t;
     else if(frz.indexOf(ds)>=0) cls+=' frz';
     if(ds===today()) cls+=' td';
@@ -1297,7 +1497,7 @@ function renderCal(){
 function openFrom(ds){ cur=ds; openDay(); go(0); }
 function renderStats(){
   var ds=dates(),i,p=0,votes=0;
-  for(i=0;i<ds.length;i++){ if(tier(DB[ds[i]])===3) p++; if(logged(DB[ds[i]])) votes++; }
+  for(i=0;i<ds.length;i++){ if(tier(DB[ds[i]],ds[i])===3) p++; if(logged(DB[ds[i]])) votes++; }
   $('stStreak').textContent=streak();
   $('stTotal').textContent=votes;
   $('stPerfect').textContent=p;
@@ -1306,15 +1506,21 @@ function renderStats(){
 function renderLevels(){
   var xp=totalXP(),L=levelOf(xp),h='',i;
   for(i=0;i<LEVELS.length;i++){
-    var on=xp>=LEVELS[i][0], cur=(i+1)===L.i;
-    h+='<div class="lvrow'+(cur?' cur':(on?' on':''))+'"><div class="lvi">LV.'+(i+1)+'</div>'+
-      '<div class="lvname">'+LEVELS[i][1]+'</div><div class="lvxpr">'+LEVELS[i][0]+' XP '+(on?'✓':'🔒')+'</div></div>';
+    var reached=(i+1)<=L.i, isCur=(i+1)===L.i, g=GATES[i];
+    h+='<div class="lvrow'+(isCur?' cur':(reached?' on':''))+'"><div class="lvi">LV.'+(i+1)+'</div>'+
+      '<div class="lvname">'+LEVELS[i][1]+'</div><div class="lvxpr">'+LEVELS[i][0]+' XP'+(g<900?' · ≤'+g+'kg':'')+' '+(reached?'✓':'🔒')+'</div></div>';
   }
   $('lvList').innerHTML=h;
   $('lvProg').textContent=xp+' XP · LV.'+L.i;
+  var b=bestW(), s1=legacy(), n='';
+  n='<div class="hint">升級要<b>兩道門都過</b>：XP 夠，而且<b>最佳 7 日均重（至少 3 筆體重）≤ 門檻</b>（目前 '+(b===null?'還沒有足夠體重紀錄':b.toFixed(1)+' kg')+'）。'+
+    '等級只升不降；XP 不會消失，體重追上來就會一次升上去。</div>';
+  if(s1.days>0) n+='<div class="s1"><div class="s1e">🏅</div><div><div class="s1t">Season 1 徽章 · LV.'+s1.lv+' '+LEVELS[s1.lv-1][1]+'</div>'+
+    '<div class="s1d">'+s1.days+' 天紀錄、累積 '+s1.xp+' XP，全都保留著。那一季讓你知道自己能記錄、也知道哪裡會鬆掉 —— 它是這一季的起點。</div></div></div>';
+  $('s1Box').innerHTML=n;
 }
 function renderMs(){
-  var w=latestW(),s=streak(),h='',done=0,i,m,hit;
+  var w=gateW(),s=streak(),h='',done=0,i,m,hit;
   for(i=0;i<MILESTONES.length;i++){ m=MILESTONES[i]; hit=w<=m.w; if(hit) done++;
     h+='<div class="ms'+(hit?' dn':'')+(m.g?' gd':'')+'"><div class="msw">'+m.w+'<span style="font-size:10px">kg</span></div>'+
       '<div class="msb"><div class="mst">'+m.e+' '+m.t+'</div><div class="msd">'+m.d+'<br>🎁 '+m.r+'</div></div>'+
@@ -1360,19 +1566,20 @@ function renderLove(){
   el.innerHTML=h;
 }
 function renderConds(){
-  var w=latestW(),s=streak(),t=DB[today()],xp=totalXP(),L=levelOf(xp),i,h='';
+  var w=gateW(),s=streak(),t=DB[today()],xp=totalXP(),L=levelOf(xp),i,h='';
   function row(rdy,ic,ti,de,va){
     return '<div class="cond'+(rdy?' rdy':'')+'"><div class="condi">'+ic+'</div><div class="condb">'+
       '<div class="condt">'+ti+'</div><div class="condd">'+de+'</div></div><div class="condn">'+va+'</div></div>';
   }
   var ck=t?ckCount(t):0, nk=t?nutriOK(t):false;
-  h+=row(ck>=4&&nk,'🥇','完美日','打卡 4 項以上 ＋ 營養達標',ck+'/4'+(nk?' ✓':''));
-  h+=row(nk,'🍱','營養達標日','主食 ≤9、蛋白質 ≥7、水果 ≥2、蔬菜 ≥4',nk?'✓':'—');
-  h+=row(false,'⚡','等級突破','每升一級一張',L.next?(xp+'/'+L.next):'MAX');
+  h+=row(perfect(t),'🥇','完美日','打卡 4 項以上 ＋ 營養達標 ＋ 水 6 杯以上',ck+'/4'+(nk?' ✓':''));
+  h+=row(nk,'🍱','營養達標日','主食 '+NUTRI.carb[0]+'–'+NUTRI.carb[1]+'、蛋白質 '+NUTRI.protein[0]+'–'+NUTRI.protein[1]+
+    '、水果 '+NUTRI.fruit[0]+'–'+NUTRI.fruit[1]+'、蔬菜 ≥'+NUTRI.veg[0]+'，且至少 2 筆飲食紀錄',nk?'✓':'—');
+  h+=row(false,'⚡','等級突破','XP 夠 ＋ 7 日均重過關，每升一級一張',L.next?(xp+'/'+L.next):'MAX');
   var nx=null; for(i=0;i<HABITS.length;i++) if(s<HABITS[i].n){ nx=HABITS[i]; break; }
-  h+=row(!nx,'🔥','連續里程碑','連續 3 / 7 / 14 / 30 / 60 / 100 天',nx?(s+'/'+nx.n):'全滿');
+  h+=row(!nx,'🔥','連續里程碑','連續 3 / 7 / 14 / 30 / 60 / 100 天（每天 ≥2 筆飲食）',nx?(s+'/'+nx.n):'全滿');
   var nm=null; for(i=0;i<MILESTONES.length;i++) if(w>MILESTONES[i].w){ nm=MILESTONES[i]; break; }
-  h+=row(!nm,'⚖️','體重里程碑','每降到 76／74／72／70／68／66／65 kg',nm?nm.w+'kg':'全滿');
+  h+=row(!nm,'⚖️','體重里程碑','每降到 78／76／74／72／70／68／66／65 kg（看 7 日均重）',nm?nm.w+'kg':'全滿');
   h+=row(false,'📉','週減達標','本週體重平均比上週低 0.3 kg 以上','週結算');
   $('condList').innerHTML=h;
 }
@@ -1416,7 +1623,7 @@ function msgText(){
   if(!pending) return '';
   return '【'+pending.e+' '+pending.t+'】\n'+pending.s+'\n─────────\n'+
     pending.ident+'\n7日平均 '+pending.w+' kg｜連續 '+pending.streak+' 天｜'+pending.lv+'\n─────────\n'+
-    '💕 誇誇任務：\n'+pending.ask+'\n\n（來自 MISSION 65 · 變帥作戰中 77 → 65 KG）';
+    '💕 誇誇任務：\n'+pending.ask+'\n\n（來自 MISSION 65 · SEASON 2 · 80.2 → 65 KG）';
 }
 function copyMsg(){
   var txt=msgText();
@@ -1475,30 +1682,91 @@ function delPraise(i){
 }
 
 /* ══════ RENDER: 洞察 ══════ */
+var HOPEN={};
+function toggleH(d){ var e=document.getElementById('hr-'+d); if(!e) return; e.classList.toggle('open'); HOPEN[d]=e.classList.contains('open'); }
 function renderHistory(){
-  var ds=dates().slice().reverse(),el=$('hList'),h='',i,d,v,p,dd,ck,t,TB=['','tb1','tb2','tb3'],TN=['','🥉','🥈','🥇'];
+  var all=dates().slice().reverse(),sel=$('hSel'),el=$('hList'),i,j,d,v,p,m;
+  /* 下拉選單：最近 14 筆 / 各月份 / 全部 */
+  var months=[],cnt={};
+  for(i=0;i<all.length;i++){ m=ym(all[i]); if(!cnt[m]){ cnt[m]=0; months.push(m); } cnt[m]++; }
+  var prev=sel.value||'r14', o='<option value="r14">最近 14 筆</option>';
+  for(i=0;i<months.length;i++){ p=months[i].split('-'); o+='<option value="'+months[i]+'">'+p[0]+' 年 '+(+p[1])+' 月（'+cnt[months[i]]+' 筆）</option>'; }
+  o+='<option value="all">全部（'+all.length+' 筆）</option>';
+  sel.innerHTML=o; sel.value=prev; if(sel.value!==prev) sel.value='r14';
+  var pick=sel.value, ds;
+  if(pick==='r14') ds=all.slice(0,14);
+  else if(pick==='all') ds=all;
+  else ds=all.filter(function(x){ return ym(x)===pick; });
+
+  var valid=0,gold=0,w0=null,w1=null,x;
+  for(i=0;i<ds.length;i++){ v=DB[ds[i]]; if(evid(v)) valid++; if(tier(v,ds[i])===3) gold++;
+    x=wOf(v); if(x>0){ if(w1===null) w1=x; w0=x; } }
+  $('hSum').innerHTML=ds.length?('<b>'+ds.length+'</b> 筆 · 有效日 <b>'+valid+'</b> · 很帥日 <b>'+gold+'</b>'+
+    ((w0!==null&&w1!==null&&w0!==w1)?(' · 體重 '+w0.toFixed(1)+' → '+w1.toFixed(1)+' kg'):'')):'';
+
   if(!ds.length) el.innerHTML='<div class="nod">尚無紀錄<br>今天就開始第一筆吧 💪</div>';
   else{
-    for(i=0;i<Math.min(ds.length,60);i++){
-      d=ds[i]; v=DB[d]; p=v.p||{}; dd=pd(d); ck=ckCount(v); t=tier(v);
-      h+='<div class="hi" onclick="openFrom(\''+d+'\')">'+
-        '<div class="hid">'+mmdd(d)+' 週'+WD[dd.getDay()]+
-        (t?'<span class="tierbadge '+TB[t]+'">'+TN[t]+'</span>':'')+'</div>'+
-        '<div style="display:flex;align-items:baseline;gap:10px"><div class="hiw">'+(v.wm?v.wm+' kg':'—')+'</div>'+
-        (ck?'<div style="font-size:11px;color:#00B26F;font-weight:800">✅ '+ck+'/5</div>':'')+
-        (v.w?'<div style="font-size:11px;color:#1F6FEB;font-weight:800">💧 '+v.w+'杯</div>':'')+
-        '<div style="font-size:11px;color:#E9A100;font-weight:800">⚡'+dayXP(v)+'</div></div>'+
-        '<div class="hip"><div class="hib">主食 '+(p.carb||0)+'</div><div class="hib">蛋白 '+(p.protein||0)+'</div>'+
-        '<div class="hib">水果 '+(p.fruit||0)+'</div><div class="hib">蔬菜 '+(p.veg||0)+'</div></div></div>';
+    var TB=['','tb1','tb2','tb3'],TN=['','🥉','🥈','🥇'],h='',t,ck,fl,cl,dd,names,f;
+    for(i=0;i<ds.length;i++){
+      d=ds[i]; v=DB[d]; p=v.p||{}; dd=pd(d); ck=ckCount(v); t=tier(v,d);
+      fl=[]; for(j=0;j<(v.f||[]).length;j++){ f=v.f[j]; fl.push(esc(typeof f==='string'?f:((f.time?f.time+' ':'')+(f.t||'')))); }
+      names=[]; for(j=0;j<CHECKS.length;j++) if(v.c&&v.c[CHECKS[j].k]) names.push(CHECKS[j].t);
+      h+='<div class="hr'+(HOPEN[d]?' open':'')+'" id="hr-'+d+'">'+
+        '<div class="hrh" onclick="toggleH(\''+d+'\')">'+
+          '<div class="hrd">'+mmdd(d)+' <span>週'+WD[dd.getDay()]+'</span></div>'+
+          '<div class="hrm">'+(t?'<span class="tierbadge '+TB[t]+'" style="margin-left:0">'+TN[t]+'</span>':'')+
+            '<span class="hrw">'+(v.wm?v.wm+' kg':'—')+'</span>'+
+            (d>=SEASON_START?'<span class="hrx">⚡'+dayXP(v)+'</span>':'<span class="hrs">S1</span>')+'</div>'+
+          '<div class="hrc">▾</div></div>'+
+        '<div class="hrb">'+
+          '<div class="hip"><div class="hib">主食 '+(p.carb||0)+'</div><div class="hib">蛋白 '+(p.protein||0)+'</div>'+
+          '<div class="hib">水果 '+(p.fruit||0)+'</div><div class="hib">蔬菜 '+(p.veg||0)+'</div>'+
+          '<div class="hib">💧 '+(v.w||0)+' 杯</div></div>'+
+          '<div class="hrf"><em>飲食</em>'+(fl.length?fl.join(' · '):'（沒有飲食紀錄）')+'</div>'+
+          '<div class="hrf"><em>打卡 '+ck+'/5</em>'+(names.length?esc(names.join('　')):'—')+'</div>'+
+          (exOn(v)?'<div class="hrf"><em>運動</em>'+exText(v)+'</div>':'')+
+          (v.wn?'<div class="hrf"><em>睡前</em>'+esc(v.wn)+' kg</div>':'')+
+          (v.n?'<div class="hrn">📝 '+esc(v.n)+'</div>':'')+
+          '<button class="dbb hre" onclick="openFrom(\''+d+'\')">✏️ 打開這一天編輯</button>'+
+        '</div></div>';
     }
     el.innerHTML=h;
   }
-  var wk=ds.slice(0,7),ids={carb:'a1',protein:'a2',fruit:'a3',veg:'a4'},k,sum,j;
+  var wk=all.slice(0,7),ids={carb:'a1',protein:'a2',fruit:'a3',veg:'a4'},k,sum;
   for(k in ids){
     if(!wk.length){ $(ids[k]).textContent='-'; continue; }
     sum=0; for(j=0;j<wk.length;j++) sum+=((DB[wk[j]].p||{})[k]||0);
     $(ids[k]).textContent=(sum/wk.length).toFixed(1);
   }
+  renderExStats();
+}
+function exText(v){ var a=[],i,x; for(i=0;i<EX.length;i++){ x=EX[i]; if(v.e&&v.e[x.k]>0) a.push(x.n+' '+v.e[x.k]+' '+x.u); } return a.join(' · '); }
+function renderExStats(){
+  var d=new Date(),days=0,tot={},i,j,v,x,h='';
+  for(i=0;i<7;i++){ v=DB[fmt(d)]; if(exOn(v)){ days++; for(j=0;j<EX.length;j++){ x=EX[j].k; tot[x]=(tot[x]||0)+(v.e[x]||0); } } d.setDate(d.getDate()-1); }
+  var show=['pushup','plank','squat','walk'],col=['var(--red)','var(--blue)','#E08A00','var(--green)'];
+  for(i=0;i<show.length;i++){ for(j=0;j<EX.length;j++) if(EX[j].k===show[i]) x=EX[j];
+    h+='<div class="tgi"><div class="tgn" style="color:'+col[i]+';font-size:'+((tot[x.k]||0)>9999?'15':'20')+'px">'+(tot[x.k]||0)+'</div><div class="tgl">'+x.n+'（'+x.u+'）</div></div>'; }
+  $('exStat').innerHTML=h;
+  $('exDays').textContent='7 天內有動 '+days+' 天';
+}
+/* 📍 計畫進度：對照計畫線，落後時給調整建議（不是責備） */
+function renderPace(){
+  var el=$('paceBox'); if(!el) return;
+  var td=today(), tw=trendW(), pl=planW(td), df=tw-pl, dl=daysTo(PLAN_END), nw=wCount7();
+  var need=dl>0?Math.max(0,tw-GOAL_W)/(dl/7):0;
+  var base=(START_W-GOAL_W)/(((pd(PLAN_END)-pd(PLAN_START))/864e5)/7);
+  var msg,cls;
+  if(nw<3){ cls='pm-na'; msg='近 7 天只有 <b>'+nw+'</b> 筆體重。連續量 3 天以上，7 日均線才準，也才看得出你和計畫線的距離。'; }
+  else if(df<=0.3){ cls='pm-ok'; msg='✅ 你在計畫線上'+(df<-0.3?'，還領先一些':'')+'。照現在的節奏走就好，不要加碼，穩定比用力重要。'; }
+  else if(df<=1.0){ cls='pm-mid'; msg='🟡 比計畫線慢 <b>'+df.toFixed(1)+' kg</b>，還在可以追回的範圍。這週最有效的兩件事：每天記滿 2 筆以上的食物，以及把拿鐵、醬料、含糖飲料這些「份量沒算到的熱量」先記下來。'; }
+  else{ cls='pm-low'; msg='🟠 比計畫線慢 <b>'+df.toFixed(1)+' kg</b>，大約是兩週以上的進度。這是調整點，不是失敗：先用一週把紀錄補滿（特別是晚餐、油和醬料）。<b>不要再往下砍份量</b> —— 主食不低於 6 份；如果下週仍落後，把終點往後延 4 週就好。'; }
+  el.innerHTML='<div class="pgrid">'+
+    '<div class="pg1"><div class="pgn" style="color:var(--violet)">'+pl.toFixed(1)+'</div><div class="pgl">今日計畫線 kg</div></div>'+
+    '<div class="pg1"><div class="pgn" style="color:var(--blue)">'+tw.toFixed(1)+'</div><div class="pgl">目前 7 日均 kg</div></div>'+
+    '<div class="pg1"><div class="pgn" style="color:'+(df<=0.3?'var(--green)':'#E08A00')+'">'+(df>0?'+':'')+df.toFixed(1)+'</div><div class="pgl">與計畫線差距</div></div></div>'+
+    '<div class="pmsg '+cls+'">'+msg+'</div>'+
+    '<div class="hint">距計畫終點 6/26 還有 <b>'+Math.max(0,dl)+'</b> 天。從現在到 65kg 平均每週要減 <b>'+need.toFixed(2)+' kg</b>（原計畫 '+base.toFixed(2)+' kg／週）。每週超過 0.6 kg 就太快了，寧可延後終點。</div>';
 }
 function renderChart(){
   if(typeof Chart==='undefined') return;
@@ -1524,16 +1792,17 @@ function renderChart(){
      pointBackgroundColor:'rgba(147,169,194,.8)',tension:.3,fill:false},
     {data:ma,borderColor:'#1F6FEB',backgroundColor:g,borderWidth:3.5,pointRadius:0,tension:.35,fill:true},
     {data:flat(PRIZE_W),borderColor:'rgba(233,161,0,.8)',borderWidth:1.5,borderDash:[5,4],pointRadius:0,fill:false},
-    {data:flat(GOAL_W),borderColor:'rgba(0,178,111,.75)',borderWidth:1.5,borderDash:[5,4],pointRadius:0,fill:false}]},
+    {data:flat(GOAL_W),borderColor:'rgba(0,178,111,.75)',borderWidth:1.5,borderDash:[5,4],pointRadius:0,fill:false},
+     {data:ds.map(function(x){ return +planW(x).toFixed(2); }),borderColor:'rgba(124,92,255,.75)',borderWidth:1.6,borderDash:[2,3],pointRadius:0,fill:false}]},
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){
-        return (c.datasetIndex===1?'7日平均 ':'當日 ')+c.parsed.y+' kg'; }}}},
+        return ['當日 ','7日平均 ','投影機 ','目標 ','計畫線 '][c.datasetIndex]+c.parsed.y+' kg'; }}}},
       scales:{y:{min:yLo,max:yHi,ticks:{color:'#93A9C2',font:{size:10},callback:function(v){return v+'kg';}},grid:{color:'#E6EDF6'}},
               x:{ticks:{color:'#93A9C2',font:{size:9},maxTicksLimit:8},grid:{display:false}}}}});
 }
 function renderChart2(){
   if(typeof Chart==='undefined') return;
-  var ds=dates(),labels=[],cum=[],s=0,i;
+  var ds=sdates(),labels=[],cum=[],s=0,i;
   for(i=0;i<ds.length;i++){ s+=dayXP(DB[ds[i]]); labels.push(mmdd(ds[i])); cum.push(s); }
   var cv=$('chart2'); if(!cv) return;
   var ctx=cv.getContext('2d'); if(!ctx) return;
@@ -1554,7 +1823,9 @@ function renderChart2(){
 var GIST_FILE='mission65.json', GIST_DESC='MISSION 65 · 減脂紀錄（自動同步，請勿刪除）';
 var syncing=false, _syncT=null;
 
-function snapshot(){ return {version:5,savedAt:new Date().toISOString(),days:DB,praise:PK,claimed:CLAIMED,settings:SET}; }
+/* 匯出／上傳用的設定：拿掉 GitHub 金鑰與 gist id，備份檔外流也不會連帶洩漏金鑰 */
+function safeSet(){ var o=jc(SET); delete o.tok; delete o.gist; return o; }
+function snapshot(){ return {version:5,savedAt:new Date().toISOString(),days:DB,praise:PK,claimed:CLAIMED,settings:safeSet()}; }
 function ghHeaders(){ return {'Authorization':'token '+SET.tok,'Accept':'application/vnd.github+json','Content-Type':'application/json'}; }
 function syncOn(){ return !!(SET.tok&&SET.gist); }
 
@@ -1660,7 +1931,7 @@ function mergeIn(cloud){
   if(cloud.settings){
     if(cloud.settings.id&&!SET.idEdited) SET.id=cloud.settings.id;
     if(cloud.settings.stack) SET.stack=cloud.settings.stack;
-    if(Array.isArray(cloud.settings.meals)&&cloud.settings.meals.length) SET.meals=cloud.settings.meals;
+    if(Array.isArray(cloud.settings.meals)&&cloud.settings.meals.length) { SET.meals=cloud.settings.meals; if(!cloud.settings.latteFix){ SET.latteFix=0; fixLatte(); } }
   }
   sDB(); sPK(); sCL(); sSET(); bust();
 }
@@ -1678,7 +1949,7 @@ function renderSync(){
     var stale=(d!==null&&d>=3)||SET.pend;
     h='<div class="sync '+(stale?'sy-warn':'sy-on')+'"><div class="sync-i">'+(syncing?'🔄':(stale?'⚠️':'☁️'))+'</div><div style="flex:1">'+
       '<div class="sync-t">'+(syncing?'同步中…':(stale?'有資料還沒上傳':'雲端同步運作中'))+'</div>'+
-      '<div class="sync-d">'+(when?('最後同步：'+when.getMonth()+1+'/'+when.getDate()+' '+String(when.getHours()).padStart(2,'0')+':'+String(when.getMinutes()).padStart(2,'0')):'尚未同步')+
+      '<div class="sync-d">'+(when?('最後同步：'+(when.getMonth()+1)+'/'+when.getDate()+' '+String(when.getHours()).padStart(2,'0')+':'+String(when.getMinutes()).padStart(2,'0')):'尚未同步')+
       '<br>刪掉桌面圖示、換手機都不會不見了。</div>'+
       '<div class="syrow"><button class="dbb" onclick="pushSync()">⬆️ 立即上傳</button>'+
       '<button class="dbb" onclick="pullSync()">⬇️ 從雲端還原</button></div>'+
@@ -1703,13 +1974,13 @@ function renderSync(){
 function showSetup(){ $('syncSetup').style.display='block'; $('syncSetup').scrollIntoView({behavior:'smooth',block:'center'}); }
 function refreshAll(){
   openDay(); renderCal(); renderStats(); renderLevels(); renderMs(); renderLove();
-  renderHistory(); renderChart(); renderChart2(); badge();
+  renderPace(); renderHistory(); renderChart(); renderChart2(); badge();
 }
 
 /* ══════ BACKUP ══════ */
 function exportData(){
-  var blob=new Blob([JSON.stringify({version:4,exported:new Date().toISOString(),
-    days:DB,praise:PK,claimed:CLAIMED,settings:SET},null,2)],{type:'application/json'});
+  var blob=new Blob([JSON.stringify({version:5,exported:new Date().toISOString(),
+    days:DB,praise:PK,claimed:CLAIMED,settings:safeSet()},null,2)],{type:'application/json'});
   var url=URL.createObjectURL(blob),a=document.createElement('a');
   a.href=url; a.download='mission65-backup-'+today()+'.json';
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
@@ -1725,15 +1996,17 @@ function importData(e){
       var o=JSON.parse(ev.target.result),k;
       if(o.days){
         for(k in o.days) DB[k]=o.days[k];
-        if(Array.isArray(o.praise)) PK=o.praise.concat(PK);
+        if(Array.isArray(o.praise)){ var seenP={},mergedP=[],allP=o.praise.concat(PK),pi,pid;
+          for(pi=0;pi<allP.length;pi++){ pid=allP[pi].id||allP[pi].ts; if(!seenP[pid]){ seenP[pid]=1; mergedP.push(allP[pi]); } }
+          PK=mergedP; }
         if(o.claimed) for(k in o.claimed) CLAIMED[k]=o.claimed[k];
         if(o.unlocked) for(k in o.unlocked) CLAIMED[k]=o.unlocked[k];
         if(o.settings){ if(o.settings.id) SET.id=o.settings.id;
           if(o.settings.stack) SET.stack=o.settings.stack;
-          if(Array.isArray(o.settings.meals)&&o.settings.meals.length) SET.meals=o.settings.meals; }
+          if(Array.isArray(o.settings.meals)&&o.settings.meals.length) { SET.meals=o.settings.meals; if(!o.settings.latteFix){ SET.latteFix=0; fixLatte(); } } }
       } else for(k in o) DB[k]=o[k];
       sDB(); sPK(); sCL(); sSET(); bust();
-      openDay(); renderCal(); renderStats(); renderLevels(); renderMs(); renderLove(); renderHistory(); renderChart(); renderChart2();
+      openDay(); renderCal(); renderStats(); renderLevels(); renderMs(); renderLove(); renderPace(); renderHistory(); renderChart(); renderChart2();
       SET.bkAt=Date.now(); sSET(); queueSync();
       toast('✅ 匯入成功 · 共 '+dates().length+' 天');
     }catch(err){ alert('❌ 檔案格式錯誤，請確認是本 App 匯出的 JSON'); }
